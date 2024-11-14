@@ -335,6 +335,7 @@
     <Compile Include="Model\THUOC.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UnitTest\HoSoBacSi\CheckAddDoctor.cs" />
     <Compile Include="ViewModel\BangDieuKhien\BangDieuKhienViewModel.cs" />
     <Compile Include="ViewModel\HoSoBacSiVM\DanhSachBacSiViewModel.cs" />
     <Compile Include="ViewModel\HoSoBacSiVM\DoiMatKhauViewModel.cs" />
@@ -867,9 +868,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UnitTest\HoSoBacSi\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
