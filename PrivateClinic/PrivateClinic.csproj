@@ -868,7 +868,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="UnitTest\" />
+    <Folder Include="UnitTest\HoSoBacSi\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
