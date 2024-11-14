@@ -1,0 +1,200 @@
+﻿<UserControl x:Class="PrivateClinic.View.HoSoBacSi.DanhSachBacSiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:PrivateClinic.View.HoSoBacSi"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="Sugoe UI"
+             FontSize="22"
+             FontWeight="Regular"
+             d:DesignHeight="530" d:DesignWidth="990">
+    <UserControl.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding ShowWDAddDoctor}" />
+    </UserControl.InputBindings>
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Tiêu đề-->
+        <StackPanel
+            Orientation="Horizontal"
+            Margin="32,0,0,0">
+            <Image Source="{StaticResource icDoctor}"
+                   Width="45"
+                   Height="45"/>
+
+            <TextBlock  Text="Tổng số lượng bác sĩ:"
+                       Margin="5,0,0,0"
+                       VerticalAlignment="Center"
+                       FontWeight="Bold"
+                       FontSize="30"
+                       Foreground="#348F6C"/>
+
+            <!--Tổng số lượng bác sĩ-->
+            <TextBlock
+                Text="{Binding SoLuong}"
+                Margin="5,0,0,0"
+                FontSize="30"
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                Foreground="#348F6C"/>
+        </StackPanel>
+
+        <!--Nút thêm + tìm kiếm bác sĩ-->
+        <StackPanel Orientation="Horizontal"
+                    Margin="18,0,0,0"
+                    Grid.Row="1">
+
+            <!--Chỗ tìm kiếm-->
+            <Border
+                Width="590"
+                Height="60"
+                BorderThickness="1"
+                BorderBrush="Black"
+                HorizontalAlignment="Left"
+                Margin="23 13 0 0"
+                CornerRadius="10"
+                >
+                <!--Tìm kiếm thuốc-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBox
+                        Margin="20 0 0 0"
+                        Width="520"
+                        Height="40"
+                        BorderThickness="0"
+                        Padding="5,0,0,0"
+                        FontSize="20"
+                        FontStyle="Italic"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        materialDesign:HintAssist.Hint="Nhập tên bác sĩ cần tìm"
+                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    <Image Source="{StaticResource icSearch}"
+                           Width="40"
+                           Height="40"
+                           Margin="0 0 5 0"/>
+                </StackPanel>
+
+            </Border>
+            <!--Nút thêm mới bác sĩ-->
+            <Button
+                Content="       Thêm (F1)"
+                FontSize="22"
+                FontWeight="Bold"
+                Margin="158 0 5 0"
+                Width="170" Height="50"
+                HorizontalAlignment="Right"
+                Command="{Binding ShowWDAddDoctor}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border BorderBrush="Transparent"
+                                    Background="#348F6C"
+                                    CornerRadius="10">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                                                      Color="Black"
+                                                      Opacity="0.5"
+                                                      BlurRadius="5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <Image
+                                HorizontalAlignment="Left"
+                                Source="{StaticResource icAdd}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+        </StackPanel>
+
+        <!--Danh sách bác sĩ-->
+        <!--Chi tiết danh sách-->
+        <Grid Grid.Row="2">
+
+            <ListView x:Name="ListViewBS"
+                      Margin="25 0 5 0"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                      ItemsSource="{Binding FilterDSBS}"
+                      >
+                <!--  Event trigger phục vụ show StaffDetail  -->
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding DataContext.DoctorDetailCommand,
+                                               RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                               CommandParameter="{Binding ElementName=ListViewBS,
+                                               Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#348F6C"
+                                BorderThickness="3"
+                                Width="280"
+                                Height="125"
+                                CornerRadius="10"
+                                Margin="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Cột hình ảnh -->
+                                <Border
+                                    Width="80"
+                                    Height="80"
+                                    Margin="10"
+                                    BorderBrush="Black"
+                                    BorderThickness="1"
+                                    CornerRadius="0">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding Image}" />
+                                    </Border.Background>
+                                </Border>
+
+
+                                <!-- Cột nội dung -->
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Vertical"
+                                            Margin="10">
+                                    <TextBlock Margin="0 0 0 4" Text="{Binding HoTen}"
+                                               FontWeight="Bold"
+                                               FontSize="16"/>
+                                    <TextBlock Margin="0 0 0 3" Text="{Binding formatMaBS}"
+                                               FontSize="14"/>
+                                    <TextBlock Margin="0 0 0 3" Text="{Binding GioiTinh}"
+                                               FontSize="14"/>
+                                    <TextBlock Margin="0 0 0 3" Text="{Binding SDT}"
+                                               FontSize="14"/>
+                                    <TextBlock Margin="0 0 0 3" Text="{Binding BangCap}"
+                                               FontSize="14"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </Grid>
+    </Grid>
+</UserControl>

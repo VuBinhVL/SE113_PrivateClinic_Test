@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F31793D-8A0C-45E6-81B7-3E76B3BC4B02}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PrivateClinic</RootNamespace>
+    <AssemblyName>PrivateClinic</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=3.0.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.3.0.0\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=5.0.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.5.0.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.3.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.3.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry.AccessControl, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.AccessControl.8.0.0\lib\net462\Microsoft.Win32.Registry.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.SystemEvents, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.SystemEvents.8.0.0\lib\net462\Microsoft.Win32.SystemEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=25.1462.40.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.25.1.40\lib\net462\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.CodeDom, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.8.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Odbc, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Odbc.8.0.0\lib\net462\System.Data.Odbc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.OleDb, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.OleDb.8.0.0\lib\net462\System.Data.OleDb.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.6, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.6\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.EventLog, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.EventLog.8.0.0\lib\net462\System.Diagnostics.EventLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.PerformanceCounter, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.PerformanceCounter.8.0.0\lib\net462\System.Diagnostics.PerformanceCounter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.DirectoryServices.Protocols" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.8.0.5\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.8.0.0\lib\net462\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipes.AccessControl, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipes.AccessControl.5.0.0\lib\net461\System.IO.Pipes.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Ports, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Ports.8.0.0\lib\net462\System.IO.Ports.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Context" />
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Cng, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Cng.5.0.0\lib\net47\System.Security.Cryptography.Cng.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.8.0.0\lib\net462\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.8.0.0\lib\net462\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Xml, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.8.0.1\lib\net462\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.8.0.0\lib\net462\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Duplex, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Duplex.4.10.0\lib\net461\System.ServiceModel.Duplex.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Http, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Http.4.10.0\lib\net461\System.ServiceModel.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.NetTcp, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.NetTcp.4.10.0\lib\net461\System.ServiceModel.NetTcp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Primitives, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Primitives.4.10.0\lib\net461\System.ServiceModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Security, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Security.4.10.0\lib\net461\System.ServiceModel.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Syndication, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceModel.Syndication.8.0.0\lib\net462\System.ServiceModel.Syndication.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.ServiceProcess.ServiceController, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ServiceProcess.ServiceController.8.0.0\lib\net462\System.ServiceProcess.ServiceController.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Text.Encoding.CodePages, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.8.0.0\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.AccessControl, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.AccessControl.8.0.0\lib\net462\System.Threading.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.Services.Description, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Services.Description.4.10.0\lib\net461\System.Web.Services.Description.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\AgeConverter.cs" />
+    <Compile Include="Converters\EnumToIntConverter.cs" />
+    <Compile Include="Converters\IndexConverter.cs" />
+    <Compile Include="Converters\StatusToBooleanConverter.cs" />
+    <Compile Include="Model\BACSI.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BAOCAODOANHTHU.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BAOCAOSUDUNGTHUOC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BENHNHAN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BenhNhanDTO.cs" />
+    <Compile Include="Model\CACHDUNG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CHUCNANG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Const.cs" />
+    <Compile Include="Model\CT_BCDT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CT_PKB.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CT_PNT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataProvider.cs" />
+    <Compile Include="Model\DVT.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HOADON.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LOAIBENH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LOAITHUOC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NGUOIDUNG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\NHOMNGUOIDUNG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PHANQUYEN.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PHIEUKHAMBENH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PHIEUNHAPTHUOC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PQDTO.cs" />
+    <Compile Include="Model\THAMSO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\THUOC.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BangDieuKhien\BangDieuKhienViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\DanhSachBacSiViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\DoiMatKhauViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\HoSoBacSiViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\PhanQuyenViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\SuaNhomNguoiDungViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\SuaThongTinBacSiViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\ThemBacSiViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\ThemNhomNguoiDungViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\ThongTinCaNhanViewModel.cs" />
+    <Compile Include="ViewModel\HoSoBacSiVM\ThongTinChiTietCuaMotBacSiViewModel.cs" />
+    <Compile Include="Model\ThuocDTO.cs" />
+    <Compile Include="ViewModel\OtherViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModel\OtherViewModels\ForgetPasswordViewModel.cs" />
+    <Compile Include="ViewModel\OtherViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModel\OtherViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModel\OtherViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModel\OtherViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModel\OtherViewModels\ViewModelCommand.cs" />
+    <Compile Include="ViewModel\QuanLiKhamBenhVM\BenhNhanDaKhamViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhamBenhVM\QuanLiKhamBenhViewModel.cs" />
+    <Compile Include="View\HoSoBacSi\DanhSachBacSiView.xaml.cs">
+      <DependentUpon>DanhSachBacSiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\DoiMatKhauView.xaml.cs">
+      <DependentUpon>DoiMatKhauView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\HoSoBacSiView.xaml.cs">
+      <DependentUpon>HoSoBacSiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\PhanQuyenUS.xaml.cs">
+      <DependentUpon>PhanQuyenUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\SuaNhomNguoiDungView.xaml.cs">
+      <DependentUpon>SuaNhomNguoiDungView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\SuaThongTinBacSiView.xaml.cs">
+      <DependentUpon>SuaThongTinBacSiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\ThemBacSiView.xaml.cs">
+      <DependentUpon>ThemBacSiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\ThemNhomNguoiDungView.xaml.cs">
+      <DependentUpon>ThemNhomNguoiDungView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\ThongTinCaNhanView.xaml.cs">
+      <DependentUpon>ThongTinCaNhanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HoSoBacSi\ThongTinChiTietCuaMotBacSIView.xaml.cs">
+      <DependentUpon>ThongTinChiTietCuaMotBacSIView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\QuanLiTiepDon\BenhNhanDangKhamViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiTiepDon\QuanLiKhamBenhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiTiepDon\QuanLiTiepDonViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiTiepDon\SuaBenhNhanViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiTiepDon\SuaThongTinDonThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiTiepDon\ThemBenhNhanViewModel.cs" />
+    <Compile Include="ViewModel\ThanhToan\HoaDonViewModel.cs" />
+    <Compile Include="ViewModel\ThanhToan\ThanhToanViewModel.cs" />
+    <Compile Include="View\BangDieuKhien\BangDieuKhienView.xaml.cs">
+      <DependentUpon>BangDieuKhienView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageBox\OkMessageBox.xaml.cs">
+      <DependentUpon>OkMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageBox\YesNoMessageBox.xaml.cs">
+      <DependentUpon>YesNoMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OtherViews\ForgetPasswordView.xaml.cs">
+      <DependentUpon>ForgetPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\QuanLiTiepDon\ThemThuocChoBenhNhanViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\KhoThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\QuanLiKhoThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\QuyDinhThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\SuaDonViTinhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\SuaLoaiBenhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\SuaLoaiThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\SuaQuiDinhThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\SuaSoCachDungViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\SuaThongTinThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\NhapThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThemCachDungViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThemDonViTinhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThemLoaiBenhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThemLoaiThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThemThuocCuViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThemThuocMoiViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\ThongTinThuocViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\XoaCachDungViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\XoaDonViTinhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\XoaLoaiBenhViewModel.cs" />
+    <Compile Include="ViewModel\QuanLiKhoThuocVM\XoaLoaiThuocViewModel.cs" />
+    <Compile Include="View\OtherViews\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OtherViews\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhamBenh\BenhNhanDaKhamView.xaml.cs">
+      <DependentUpon>BenhNhanDaKhamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhamBenh\QuanLiKhamBenhView.xaml.cs">
+      <DependentUpon>QuanLiKhamBenhView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\BenhNhanDangKhamView.xaml.cs">
+      <DependentUpon>BenhNhanDangKhamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\QuanLiKhamBenhView.xaml.cs">
+      <DependentUpon>QuanLiKhamBenhView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\KhoThuocView.xaml.cs">
+      <DependentUpon>KhoThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\NhapThuocView.xaml.cs">
+      <DependentUpon>NhapThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\QuanLiKhoThuocView.xaml.cs">
+      <DependentUpon>QuanLiKhoThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\QuyDinhThuocView.xaml.cs">
+      <DependentUpon>QuyDinhThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\SuaDonViTinhView.xaml.cs">
+      <DependentUpon>SuaDonViTinhView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\SuaLoaiBenhView.xaml.cs">
+      <DependentUpon>SuaLoaiBenhView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\SuaLoaiThuocView.xaml.cs">
+      <DependentUpon>SuaLoaiThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\SuaQuiDinhThuocView.xaml.cs">
+      <DependentUpon>SuaQuiDinhThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\SuaSoCachDungView.xaml.cs">
+      <DependentUpon>SuaSoCachDungView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\SuaThongTinThuocView.xaml.cs">
+      <DependentUpon>SuaThongTinThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThemCachDungUS.xaml.cs">
+      <DependentUpon>ThemCachDungUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThemDonViTinhUS.xaml.cs">
+      <DependentUpon>ThemDonViTinhUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThemLoaiBenhUS.xaml.cs">
+      <DependentUpon>ThemLoaiBenhUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThemLoaiThuocUS.xaml.cs">
+      <DependentUpon>ThemLoaiThuocUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThemThuocCuView.xaml.cs">
+      <DependentUpon>ThemThuocCuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThemThuocMoiView.xaml.cs">
+      <DependentUpon>ThemThuocMoiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\ThongTinThuocView.xaml.cs">
+      <DependentUpon>ThongTinThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\XoaCachDungUS.xaml.cs">
+      <DependentUpon>XoaCachDungUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\XoaDonViTinhUS.xaml.cs">
+      <DependentUpon>XoaDonViTinhUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\XoaLoaiBenhUS.xaml.cs">
+      <DependentUpon>XoaLoaiBenhUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiKhoThuoc\XoaLoaiThuocUS.xaml.cs">
+      <DependentUpon>XoaLoaiThuocUS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\QuanLiTiepDonView.xaml.cs">
+      <DependentUpon>QuanLiTiepDonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\SuaBenhNhanView.xaml.cs">
+      <DependentUpon>SuaBenhNhanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\SuaThongTinDonThuocView.xaml.cs">
+      <DependentUpon>SuaThongTinDonThuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\ThemBenhNhanView.xaml.cs">
+      <DependentUpon>ThemBenhNhanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThanhToan\HoaDon.xaml.cs">
+      <DependentUpon>HoaDon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ThanhToan\ThanhToanView.xaml.cs">
+      <DependentUpon>ThanhToanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\QuanLiTiepDon\ThemThuocChoBenhNhanView.xaml.cs">
+      <DependentUpon>ThemThuocChoBenhNhanView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ResourceXAML\Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceXAML\ImageResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceXAML\MainResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceXAML\NavigationStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceXAML\TextStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BangDieuKhien\BangDieuKhienView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\DanhSachBacSiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\DoiMatKhauView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\HoSoBacSiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\PhanQuyenUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\SuaNhomNguoiDungView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\SuaThongTinBacSiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\ThemBacSiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\ThemNhomNguoiDungView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\ThongTinCaNhanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HoSoBacSi\ThongTinChiTietCuaMotBacSIView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageBox\OkMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageBox\YesNoMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OtherViews\ForgetPasswordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OtherViews\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OtherViews\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\BenhNhanDangKhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\QuanLiKhamBenhView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhamBenh\BenhNhanDaKhamView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhamBenh\QuanLiKhamBenhView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\KhoThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\NhapThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\QuanLiKhoThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\QuyDinhThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\SuaDonViTinhView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\SuaLoaiBenhView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\SuaLoaiThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\SuaQuiDinhThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\SuaSoCachDungView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\SuaThongTinThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThemCachDungUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThemDonViTinhUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThemLoaiBenhUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThemLoaiThuocUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThemThuocCuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThemThuocMoiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\ThongTinThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\XoaCachDungUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\XoaDonViTinhUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\XoaLoaiBenhUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiKhoThuoc\XoaLoaiThuocUS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\QuanLiTiepDonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\SuaBenhNhanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\SuaThongTinDonThuocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\ThemBenhNhanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ThanhToan\HoaDon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ThanhToan\ThanhToanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\QuanLiTiepDon\ThemThuocChoBenhNhanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\image\ic_add.png" />
+    <Resource Include="ResourceXAML\image\ic_arrow_down.png" />
+    <Resource Include="ResourceXAML\image\ic_arrow_up.png" />
+    <Resource Include="ResourceXAML\image\ic_baby_calendar.png" />
+    <Resource Include="ResourceXAML\image\ic_cancel.png" />
+    <Resource Include="ResourceXAML\image\ic_cash.png" />
+    <Resource Include="ResourceXAML\image\ic_check_mark.png" />
+    <Resource Include="ResourceXAML\image\ic_clinic.png" />
+    <Resource Include="ResourceXAML\image\ic_clinic_1.png" />
+    <Resource Include="ResourceXAML\image\ic_delete.png" />
+    <Resource Include="ResourceXAML\image\ic_delete_white.png" />
+    <Resource Include="ResourceXAML\image\ic_doctor.png" />
+    <Resource Include="ResourceXAML\image\ic_identification_documents.png" />
+    <Resource Include="ResourceXAML\image\ic_identification_documents_green.png" />
+    <Resource Include="ResourceXAML\image\ic_lock.png" />
+    <Resource Include="ResourceXAML\image\ic_lock_1.png" />
+    <Resource Include="ResourceXAML\image\ic_logout.png" />
+    <Resource Include="ResourceXAML\image\ic_logout_green.png" />
+    <Resource Include="ResourceXAML\image\ic_male_user.png" />
+    <Resource Include="ResourceXAML\image\ic_male_user_blue.png" />
+    <Resource Include="ResourceXAML\image\ic_medical_doctor.png" />
+    <Resource Include="ResourceXAML\image\ic_medical_doctor_green.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_cash.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_dashboard.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_doctor_profile.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_logout.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_medical_examination_management.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_pharmacy_management.png" />
+    <Resource Include="ResourceXAML\image\ic_menu_reception_management.png" />
+    <Resource Include="ResourceXAML\image\ic_money_bill.png" />
+    <Resource Include="ResourceXAML\image\ic_money_bill_green.png" />
+    <Resource Include="ResourceXAML\image\ic_money_bill_white.png" />
+    <Resource Include="ResourceXAML\image\ic_nurse_1.png" />
+    <Resource Include="ResourceXAML\image\ic_person.png" />
+    <Resource Include="ResourceXAML\image\ic_pill.png" />
+    <Resource Include="ResourceXAML\image\ic_print.png" />
+    <Resource Include="ResourceXAML\image\ic_repair.png" />
+    <Resource Include="ResourceXAML\image\ic_save%28white%29.png" />
+    <Resource Include="ResourceXAML\image\ic_save.png" />
+    <Resource Include="ResourceXAML\image\ic_search.png" />
+    <Resource Include="ResourceXAML\image\ic_speed.png" />
+    <Resource Include="ResourceXAML\image\ic_speed_green.png" />
+    <Resource Include="ResourceXAML\image\ic_stethoscope.png" />
+    <Resource Include="ResourceXAML\image\ic_tip.png" />
+    <Resource Include="ResourceXAML\image\ic_treatment.png" />
+    <Resource Include="ResourceXAML\image\ic_treatment_black.png" />
+    <Resource Include="ResourceXAML\image\ic_treatment_green.png" />
+    <Resource Include="ResourceXAML\image\ic_user.png" />
+    <Resource Include="ResourceXAML\image\ic_warehouse.png" />
+    <Resource Include="ResourceXAML\image\ic_warehouse_green.png" />
+    <Resource Include="ResourceXAML\image\ic_x.png" />
+    <Resource Include="ResourceXAML\image\img_doctor_consulation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceXAML\image\img_avatar_default.png" />
+    <Resource Include="ResourceXAML\image\img_banner.png" />
+    <Resource Include="ResourceXAML\image\ic_x_payment.png" />
+    <Resource Include="ResourceXAML\image\ic_wallet.png" />
+    <Resource Include="ResourceXAML\image\ic_khambenh.png" />
+    <Resource Include="ResourceXAML\image\ic_email.png" />
+    <Resource Include="ResourceXAML\image\img_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UnitTest\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

@@ -1,0 +1,212 @@
+﻿<UserControl x:Class="PrivateClinic.View.QuanLiKhoThuoc.QuyDinhThuocView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrivateClinic.View.QuanLiKhoThuoc"
+             mc:Ignorable="d"
+             x:Name="QuiDinhThuocViewPage"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+
+             Background="Transparent"
+             FontFamily="Segoe UI"
+             TextElement.FontSize="22"
+             TextElement.FontWeight="Regular"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Border  Padding="10"
+            Background="White"
+            BorderBrush="DarkGray"
+            BorderThickness="0.7"
+            CornerRadius="12">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="125"/>
+                <RowDefinition Height="125"/>
+                <RowDefinition Height="125"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Text="QUY ĐỊNH " FontSize="40" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 13"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Button  Margin="0 0 100 0"  Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Right" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding EditQDCommand}"
+                                                   CommandParameter="{Binding ElementName=QuiDinhThuocViewPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+
+            </Grid>
+            <Grid Margin="30 0 0 0" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Rectangle HorizontalAlignment="Left" Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#C3B59B" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <TextBlock Margin="20 0 " Text="1" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" />
+                    <Line X1="50" Y1="88" X2="70" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <Line X1="70" Y1="35" X2="370" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <WrapPanel Margin="0 0 50 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="20 0 5 0 " Text="Có" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock x:Name="cachdung" Margin="0 0 "
+                                   Text="{Binding CachDung}"
+                                   Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Margin="5 0 " Text="cách dùng thuốc" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Rectangle HorizontalAlignment="Left" Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#C3B59B" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <TextBlock Margin="20 0 " Text="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" />
+                    <Line X1="50" Y1="88" X2="70" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <Line X1="70" Y1="35" X2="370" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <WrapPanel Margin="0 0 50 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="20 0 5 0 " Text="Giá bán = " Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock x:Name="Tilegia"
+                                   Text="{Binding Tilegia}"
+                                   Margin="0 0 "  Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Margin="5 0 " Text="x Giá nhập" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    </WrapPanel>
+                </Grid>
+
+            </Grid>
+            <Grid Margin="30 0 0 0" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Rectangle HorizontalAlignment="Left" Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#C3B59B" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <TextBlock Margin="20 0 " Text="3" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" />
+                    <Line X1="50" Y1="88" X2="70" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <Line X1="70" Y1="35" X2="370" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <WrapPanel Margin="0 0 50 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="20 0 5 0 " Text="Thuốc có " Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock  x:Name="dvt" Margin="0 0 "  Foreground="Red"
+                                   Text="{Binding dvt}"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Margin="5 0 " Text="loại đơn vị tính" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Rectangle HorizontalAlignment="Left" Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#C3B59B" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <TextBlock Margin="20 0 " Text="4" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" />
+                    <Line X1="50" Y1="88" X2="70" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <Line X1="70" Y1="35" X2="370" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <WrapPanel Margin="0 0 50 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="20 0 5 0 " Text="Tiền khám: " Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock x:Name="tienkham"
+                                   Text="{Binding tienkham}"
+                                   Margin="0 0 "  Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Margin="5 0 " Text=" VND" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    </WrapPanel>
+                </Grid>
+
+            </Grid>
+            <Grid Margin="30 0 0 0" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Rectangle HorizontalAlignment="Left" Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#C3B59B" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <TextBlock Margin="20 0 " Text="5" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" />
+                    <Line X1="50" Y1="88" X2="70" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <Line X1="70" Y1="35" X2="370" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <WrapPanel Margin="0 0 50 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="20 0 5 0 " Text="Có" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock x:Name="loaibenh"
+                                   Text="{Binding loaibenh}"
+                                   Margin="0 0 "  Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Margin="5 0 " Text=" loại bệnh" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    </WrapPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Rectangle HorizontalAlignment="Left" Width="50" Height="50">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#C3B59B" Offset="0" />
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                        <Rectangle.Stroke>
+                            <SolidColorBrush Color="Black" />
+                        </Rectangle.Stroke>
+                    </Rectangle>
+                    <TextBlock Margin="20 0 " Text="6" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" />
+                    <Line X1="50" Y1="88" X2="70" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <Line X1="70" Y1="35" X2="370" Y2="35" Stroke="Black" StrokeThickness="2" />
+                    <WrapPanel Margin="0 0 50 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="20 0 5 0 " Text="Có" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock x:Name="loaithuoc"
+                                   Text="{Binding loaithuoc}"
+                                   Margin="0 0 "  Foreground="Red" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                        <TextBlock Margin="5 0 " Text=" loại thuốc" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    </WrapPanel>
+                </Grid>
+
+
+            </Grid>
+
+        </Grid>
+
+
+    </Border>
+</UserControl>

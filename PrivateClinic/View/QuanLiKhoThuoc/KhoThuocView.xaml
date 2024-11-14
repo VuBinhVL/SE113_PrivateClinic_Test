@@ -1,0 +1,383 @@
+﻿<UserControl x:Class="PrivateClinic.View.QuanLiKhoThuoc.KhoThuocView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrivateClinic.View.QuanLiKhoThuoc"
+             mc:Ignorable="d"
+             x:Name="KhoThuocViewPage"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="750" d:DesignWidth="990">
+    <UserControl.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding AddMedicineCommand}"
+                    CommandParameter="{Binding ElementName=KhoThuocViewPage}"/>
+    </UserControl.InputBindings>
+    <Border
+        Padding="10"
+        Background="White"
+        BorderBrush="DarkGray"
+        BorderThickness="0.7"
+        CornerRadius="20">
+
+        <Grid>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="270" />
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0">
+                <StackPanel
+                    Margin="30,20,0,0"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+
+                    <Border VerticalAlignment="Center">
+                        <!--<TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="30"
+                        FontWeight="SemiBold"
+                        Foreground="#348F6C"
+                        Text="Số loại thuốc trong kho" />-->
+                        <!--  Tiêu đề  -->
+                        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+                            <Image
+                                Width="45"
+                                Height="45"
+                                Source="{StaticResource icPill}" />
+
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="30"
+                                FontWeight="Bold"
+                                Foreground="#348F6C"
+                                Text="Số thuốc trong kho:" />
+
+                            <!--  Tổng số loại thuốc  -->
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                FontSize="30"
+                                FontWeight="Bold"
+                                Foreground="#348F6C"
+                                Text="{Binding SoLuongThuoc}" />
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <Button
+                    Width="170"
+                    Height="50"
+                    Margin="5,0,20,0"
+                    HorizontalAlignment="Right"
+                    Content="       Thêm (F1)"
+                    FontFamily="Segoe UI"
+                    FontSize="22"
+                    FontWeight="Bold"
+                    ToolTip="Thêm bệnh nhân">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border
+                                    Background="#348F6C"
+                                    BorderBrush="Transparent"
+                                    CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="5"
+                                            Opacity="0.5"
+                                            ShadowDepth="5"
+                                            Color="Black" />
+                                    </Border.Effect>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <Image HorizontalAlignment="Left" Source="{StaticResource icAdd}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding AddMedicineCommand}" CommandParameter="{Binding ElementName=KhoThuocViewPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Border Width="590" Height="60" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Margin="23 13 0 0" CornerRadius="10">
+                    <Grid>
+                        <TextBox
+                            Margin="20 0 0 0"
+                            HorizontalAlignment="Left"
+                            materialDesign:HintAssist.Hint="Nhập thuốc cần tìm"
+                            FontFamily="Segoe UI"
+                            FontSize="20"
+                            FontStyle="Italic"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Width="520"
+                            Height="40"
+                            x:Name="txbSearch">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding SearchCommand}"
+                                                           CommandParameter="{Binding ElementName=KhoThuocViewPage}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
+
+                        <Button Margin="0 0 5 0"  Width="40" Height="40" HorizontalAlignment="Right"
+                                Command="{Binding ElementName=listBox, Path=DataContext.SearchCommand}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Image Source="{StaticResource icSearch}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+            <!--  HEADER  -->
+            <Grid Grid.Row="2">
+                <Border
+                    Width="924"
+                    Height="50"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Background="#D9D9D9"
+                    CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="170" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe UI"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="STT" />
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0"
+                                FontFamily="Segoe UI"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="Mã thuốc" />
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                Margin="15,0,0,0"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe UI"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="Tên thuốc" />
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe UI"
+                                FontSize="20"
+                                Margin="10,0,0,0"
+                                FontWeight="Bold"
+                                Text="ĐVT" />
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="5,0,0,0"
+                                FontFamily="Segoe UI"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="Số lượng" />
+                        </Grid>
+                        <Grid Grid.Column="5">
+                            <TextBlock
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe UI"
+                                Margin="30,0,0,0"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="Đơn giá nhập" />
+                        </Grid>
+                        <Grid Grid.Column="6">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="Segoe UI"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                Text="Thao tác" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <ListView
+                    x:Name="MedicineListView"
+                    Margin="10,0,0,-59"
+                    FontSize="22"
+                    FontWeight="Regular"
+                    ItemsSource="{Binding listMed}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                    SelectedItem="selecteditem " d:ItemsSource="{d:SampleData ItemCount=5}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Width="924"
+                                Height="50"
+                                Margin="10,0,0,0"
+                                Background="White"
+                                CornerRadius="10">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="130" />
+                                        <ColumnDefinition Width="200" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="170" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Margin="22,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Segoe UI"
+                                            Text="{Binding STT}" />
+
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Segoe UI"
+                                            Margin="10,0,0,0"
+                                            Text="{Binding MaThuoc}" />
+
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            Margin="8,0,0,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Segoe UI"
+                                            Text="{Binding TenThuoc}" />
+
+                                    </Grid>
+                                    <Grid Grid.Column="3">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Segoe UI"
+                                            Margin="0,0,0,0"
+                                            Text="{Binding DVT}" />
+
+                                    </Grid>
+                                    <Grid Grid.Column="4">
+                                        <TextBlock
+                                            HorizontalAlignment="Center"
+                                            Margin="0,0,20,0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="Segoe UI"
+                                            Text="{Binding SL}" />
+                                    </Grid>
+                                    <Grid Grid.Column="5">
+                                        <TextBlock
+                                            HorizontalAlignment="Left"
+                                            VerticalAlignment="Center"
+                                            Margin="20,0,0,0"
+                                            FontFamily="Segoe UI"
+                                            Text="{Binding Gia, StringFormat='{}{0:N0}'}" />
+                                    </Grid>
+                                    <Grid Grid.Column="6">
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Orientation="Horizontal">
+                                            <Button
+                                                Width="40"
+                                                Height="40"
+                                                Margin="0,0,0,0"
+                                                HorizontalAlignment="Right"
+                                                Click="EditMedicineButton_Click"
+                                                Command="{Binding EditMedicineCommand}"
+                                                CommandParameter="{Binding}"
+                                                ToolTip="Sửa thông tin thuốc ">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Grid>
+                                                            <Image Source="{StaticResource icRepair}" Stretch="UniformToFill" />
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                            <!--<Button
+                                            Width="40"
+                                            Height="40"
+                                            Margin="0,0,0,4"
+                                            Padding="0,0,0,10"
+                                            HorizontalAlignment="Right"
+                                            Click="DeleteMedicineButton_Click"
+                                            Command="{Binding DeleteMedicineCommand}"
+                                            CommandParameter="{Binding}"
+                                            ToolTip="Xoá thông tin thuốc ">
+                                            <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                            <Grid>
+                                            <Image Source="{StaticResource icDelete}" Stretch="UniformToFill" />
+                                            </Grid>
+                                            </ControlTemplate>
+                                            </Button.Template>
+                                            </Button>-->
+                                        </StackPanel>
+                                    </Grid>
+                                    <Border
+                                        Grid.ColumnSpan="7"
+                                        Margin="0,0,10,0"
+                                        BorderBrush="Black"
+                                        BorderThickness="0,0,0,1" />
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding DetailMedicineCommand}" CommandParameter="{Binding ElementName=KhoThuocViewPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ListView>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

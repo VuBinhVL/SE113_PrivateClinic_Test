@@ -1,0 +1,423 @@
+﻿<Window
+    x:Class="PrivateClinic.View.QuanLiKhoThuoc.ThayDoiQuiDinhThuocView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:PrivateClinic.View.QuanLiKhoThuoc"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ThayDoiQuiDinhThuocView"
+    Height="540"
+    Width="750"
+    BorderBrush="Transparent"
+    WindowStyle="None"
+    ResizeMode="NoResize"
+    Background="Transparent"
+    FontFamily="Segoe UI"
+    TextElement.FontSize="22"
+    TextElement.FontWeight="Regular"
+    x:Name="SuaQuiDinhThuocViewPage"
+    AllowsTransparency="True"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    mc:Ignorable="d">
+    <Window.InputBindings>
+        <KeyBinding Key="F2" Command="{Binding CancelCommand}"
+                    CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}"/>
+        <KeyBinding Key="F3" Command="{Binding SaveCommand}"
+                    CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}"/>
+    </Window.InputBindings>
+
+    <Border
+
+        Background="White"
+        BorderBrush="DarkGray"
+        CornerRadius="10"
+        BorderThickness="0.7"
+        >
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0">
+
+                <!--  Tiêu đề  -->
+                <TextBlock
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    Text="Sửa các quy định về thuốc" />
+
+
+            </Grid>
+            <!--  Row 1  -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="10,0,0,10"
+                    HorizontalAlignment="Right"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Text="Tiền khám:" />
+
+                <Border
+                    Grid.Column="1"
+                    Width="250"
+                    Height="35"
+                    Margin="20,0,0,10"
+                    HorizontalAlignment="Left"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    CornerRadius="10">
+
+                    <TextBox
+                        Width="250"
+                        Height="35"
+                        Padding="20,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Text="{Binding tienkham}"
+                        FontSize="18"
+                        x:Name="TienKham"/>
+
+                </Border>
+
+
+            </Grid>
+
+            <!--  Row 2  -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="10,0,0,10"
+                    HorizontalAlignment="Right"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Text="Lãi suất bán:" />
+
+                <Border
+                    Grid.Column="1"
+                    Width="250"
+                    Height="35"
+                    Margin="20,0,0,10"
+                    HorizontalAlignment="Left"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    CornerRadius="10">
+
+                    <TextBox
+                        Width="250"
+                        Height="35"
+                        Padding="20,0,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        FontSize="18"
+                        x:Name="Tilegia"
+                        Text="{Binding Tilegia}"/>
+
+                </Border>
+
+
+            </Grid>
+
+            <!--  Row 3  -->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="10,0,0,10"
+                    HorizontalAlignment="Right"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Text="Đơn vị tính:" />
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Border
+                        Width="250"
+                        Height="35"
+                        Margin="22, 0,0,10"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Black"
+                        BorderThickness="0.7"
+                        CornerRadius="10">
+                        <TextBox IsReadOnly="True"
+                                 Width="250"
+                                 Height="35"
+                                 Padding="20,0,0,0"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="18"
+                                 x:Name="Dvt"
+                                 Text="{Binding dvt}"/>
+                    </Border>
+                    <Button ToolTip="Sửa đơn vị tính" Margin="20 0"  Width="40" Height="40" HorizontalAlignment="Right" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding EditDvtCommand}"
+                                                       CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+
+                </StackPanel>
+
+
+            </Grid>
+            <!--  Row 4  -->
+            <Grid Grid.Row="4">
+
+                <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="-22 0 0 0">
+                    <TextBlock
+
+                        Margin="10,0,0,10"
+                        HorizontalAlignment="Right"
+                        FontSize="20"
+                        VerticalAlignment="Center"
+                        Text="Số cách dùng:" />
+
+                    <Border
+
+                        Width="250"
+                        Height="35"
+                        Margin="18,0,0,10"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Black"
+                        BorderThickness="0.7"
+                        CornerRadius="10">
+
+                        <TextBox IsReadOnly="True"
+                                 Width="250"
+                                 Height="35"
+                                 Padding="20,0,0,0"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 FontSize="18"
+                                 VerticalContentAlignment="Center"
+                                 x:Name="cachdung"
+                                 Text="{Binding CachDung}"/>
+
+                    </Border>
+                    <Button ToolTip="Sửa số cách dùng" Margin="20 0"  Width="40" Height="40" HorizontalAlignment="Right" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding EditCachDungCommand}"
+                                                       CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </WrapPanel>
+
+            </Grid>
+            <!--  Row 5 -->
+            <Grid Grid.Row="5">
+
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-15 0 0 0">
+                    <TextBlock
+
+                        Margin="10,0,0,10"
+                        HorizontalAlignment="Right"
+                        FontSize="20"
+                        VerticalAlignment="Center"
+                        Text="Số loại bệnh:" />
+
+                    <Border
+
+                        Width="250"
+                        Height="35"
+                        Margin="18,0,0,10"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Black"
+                        BorderThickness="0.7"
+                        CornerRadius="10">
+
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding loaibenh}"
+                                 Width="250"
+                                 Height="35"
+                                 Padding="20,0,0,0"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 FontSize="18"
+                                 VerticalContentAlignment="Center"
+                                 x:Name="loaibenh" />
+
+                    </Border>
+                    <Button ToolTip="Sửa số loại bệnh" Margin="20 0"  Width="40" Height="40" HorizontalAlignment="Right" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding EditSLBenhCommand}"
+                                                       CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </WrapPanel>
+
+            </Grid>
+            <Grid Grid.Row="6">
+
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-15 0 0 0">
+                    <TextBlock
+
+                        Margin="10,0,0,10"
+                        HorizontalAlignment="Right"
+                        FontSize="20"
+                        VerticalAlignment="Center"
+                        Text="Số loại thuốc:" />
+
+                    <Border
+
+                        Width="250"
+                        Height="35"
+                        Margin="18,0,0,10"
+                        HorizontalAlignment="Left"
+                        BorderBrush="Black"
+                        BorderThickness="0.7"
+                        CornerRadius="10">
+
+                        <TextBox IsReadOnly="True"
+                                 Text="{Binding loaithuoc}"
+                                 Width="250"
+                                 Height="35"
+                                 Padding="20,0,0,0"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 FontSize="18"
+                                 VerticalContentAlignment="Center"
+                                 x:Name="loaithuoc" />
+
+                    </Border>
+                    <Button ToolTip="Sửa số loại thuốc" Margin="20 0"  Width="40" Height="40" HorizontalAlignment="Right" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding EditSLThuocCommand}"
+                                                       CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </WrapPanel>
+
+            </Grid>
+
+            <!--  Row 6  -->
+            <Grid Grid.Row="7">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Content="       Hủy (F2)" FontSize="22" FontFamily="Segoe UI" FontWeight="Bold" Margin="5 0 22 0"  Width="170" Height="50" HorizontalAlignment="Right" >
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border BorderBrush="Transparent" Background="#D51F2A" CornerRadius="10">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="5"/>
+                                        </Border.Effect>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <Image HorizontalAlignment="Left" Source="{StaticResource icCancel}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding CancelCommand}"
+                                                       CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button
+                        Width="170"
+                        Height="50"
+                        Margin="5,0,30,0"
+                        HorizontalAlignment="Right"
+                        Content="       Lưu (F3)"
+                        FontFamily="Segoe UI"
+                        FontSize="22"
+                        FontWeight="Bold">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border
+                                        Background="#364C9A"
+                                        BorderBrush="Transparent"
+                                        CornerRadius="10">
+                                        <Border.Effect>
+                                            <DropShadowEffect
+                                                BlurRadius="5"
+                                                Opacity="0.5"
+                                                ShadowDepth="5"
+                                                Color="Black" />
+                                        </Border.Effect>
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <Image HorizontalAlignment="Left" Source="{StaticResource icSaveWhite}" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <i:InvokeCommandAction Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=SuaQuiDinhThuocViewPage}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>

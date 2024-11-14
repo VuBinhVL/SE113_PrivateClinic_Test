@@ -1,0 +1,212 @@
+﻿<Window x:Class="PrivateClinic.View.OtherViews.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PrivateClinic.View.OtherViews"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="LoginView" Height="750" Width="1300"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Name="LoginViewpage"
+        Icon= "{StaticResource icStethoscope}"
+        WindowStartupLocation="CenterScreen">
+
+
+    <Border Background="#03A66A" CornerRadius="25">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--First column-->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--First row-->
+                <Grid Grid.Row="0">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                        <Image Source="{StaticResource icStethoscope}"
+                               Width="55"
+                               Height="60"
+                               Margin="30 0 0 0"/>
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                            <TextBlock Text="HỆ THỐNG QUẢN LÍ"
+                                       FontSize="26"
+                                       FontFamily="Segoe UI"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       Margin="10 0 0 0"
+                                       />
+                            <TextBlock Text="PHÒNG MẠCH TƯ"
+                                       FontSize="26"
+                                       FontFamily="Segoe UI"
+                                       VerticalAlignment="Center"
+                                       FontWeight="SemiBold"
+                                       Margin="10 0 0 0"
+                                       />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <!--Second row-->
+                <Grid Grid.Row="1">
+                    <Image Source="{StaticResource icClinic1}"/>
+                </Grid>
+            </Grid>
+            <!--Second column-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Margin="10 0 30 0">
+                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#7E542E" Height="24" Width="24" Margin="0,0,8,0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding MinimizeLogin}"
+                                                           CommandParameter="{Binding ElementName=LoginViewpage}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+                        <materialDesign:PackIcon Kind="CloseThick" Foreground="#7E542E" Height="24" Width="24">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding CloseLogin}"
+                                                           CommandParameter="{Binding ElementName=LoginViewpage}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </materialDesign:PackIcon>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Border CornerRadius="25" Background="White" Width="583" Height="592" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40"/>
+                                <RowDefinition Height="220"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="1">
+                                <StackPanel Margin="0 65 0 0" Orientation="Vertical">
+                                    <TextBlock Text="ĐĂNG NHẬP"
+                                               FontSize="32"
+                                               FontFamily="Segoe UI"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"/>
+                                    <Image Source="{StaticResource icNurse1}"
+                                           Width="115"
+                                           Height="115"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Border Margin="0 20 0 0" CornerRadius="30" Background="#DDDDDD" Width="420" Height="65" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0">
+                                        <StackPanel Orientation="Horizontal"  >
+                                            <Image Source="{StaticResource icUser}"
+                                                   Width="35"
+                                                   Height="35"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Margin="30 12.5"/>
+
+                                            <TextBox
+                                                materialDesign:HintAssist.Hint="Tên đăng nhập"
+                                                FontFamily="Segoe UI"
+                                                FontSize="18"
+                                                VerticalAlignment="Top"
+                                                Text="{Binding Username}"
+                                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="290" />
+                                        </StackPanel>
+                                    </Border>
+                                    <Border Margin="0 20 0 0" CornerRadius="30" Background="#DDDDDD" Width="420" Height="65" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1">
+                                        <StackPanel Orientation="Horizontal"  >
+                                            <Image Source="{StaticResource icLock1}"
+                                                   Width="35"
+                                                   Height="35"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Margin="30 12.5"/>
+                                            <PasswordBox
+                                                materialDesign:HintAssist.Hint="Mật khẩu"
+                                                 KeyDown="FloatingPasswordBox_KeyDown"
+                                                FontFamily="Segoe UI"
+                                                FontSize="18"
+                                                VerticalAlignment="Top"
+                                                x:Name="FloatingPasswordBox"
+                                                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                                Width="290"
+                                                Height="55">
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="PasswordChanged">
+                                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                                                               CommandParameter="{Binding ElementName=FloatingPasswordBox}">
+                                                        </i:InvokeCommandAction>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </PasswordBox>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+
+
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <StackPanel>
+                                    <Button
+                                        Margin="280,5,0,0"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Command="{Binding ForgotPasswordCommand}"
+                                        Content="Quên mật khẩu?"
+                                        Width="145"
+                                        FontSize="16"
+                                        FontWeight="DemiBold"
+                                        Foreground="Blue" />
+                                    <!--Lỗi-->
+                                    <TextBlock FontSize="14.5"
+                                               Foreground="Red"
+                                               Text="{Binding ErrorMessage}"
+                                               HorizontalAlignment="Center"
+                                               Margin="0,0,0,0"
+                                               />
+                                    <Button Click="Button_Click" Content="Đăng nhập" FontSize="18" Height="55" Width="350" VerticalAlignment="Top" Margin="0 10 0 0">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border BorderBrush="Transparent" Background="#EE3C46" CornerRadius="10">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="5"/>
+                                                    </Border.Effect>
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+
+                                </StackPanel>
+
+                            </Grid>
+                        </Grid>
+
+                    </Border>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+

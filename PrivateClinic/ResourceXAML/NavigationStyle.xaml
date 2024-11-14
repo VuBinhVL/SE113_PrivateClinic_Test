@@ -1,0 +1,338 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:view="clr-namespace:PrivateClinic.View.OtherViews">
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+       TargetType="RadioButton"
+       x:Key="BangDieukhien">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Height="80"
+                                x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icSpeed}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Bảng điều khiển"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="IconImage" Property="Source" Value="{StaticResource ResourceKey=icSpeedGreen}" />
+                                <Setter TargetName="TextBlock" Property="Foreground" Value="Black" />
+                                <Setter TargetName="TextBlock" Property="FontWeight" Value="Medium" />
+                                <Setter TargetName="MainBorder" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+       TargetType="RadioButton"
+       x:Key="TiepDon">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Height="80"
+                            x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icIdentificationDocuments}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Quản lí khám bệnh"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="IconImage" Property="Source" Value="{StaticResource ResourceKey=icIdentificationDocumentsGreen}"/>
+                                <Setter TargetName="TextBlock" Property="Foreground" Value="Black" />
+                                <Setter TargetName="TextBlock" Property="FontWeight" Value="Medium" />
+                                <Setter TargetName="MainBorder" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+       TargetType="RadioButton"
+       x:Key="KhamBenh">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Height="80"
+                            x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icTreatment}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Quản lí bệnh nhân"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="IconImage" Property="Source" Value="{StaticResource ResourceKey=icTreatmentGreen}" />
+                                <Setter TargetName="TextBlock" Property="Foreground" Value="Black" />
+                                <Setter TargetName="TextBlock" Property="FontWeight" Value="Medium" />
+                                <Setter TargetName="MainBorder" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+       TargetType="RadioButton"
+       x:Key="ThanhToan">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Height="80"
+                            x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icMoneyBill}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Thanh toán"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="IconImage" Property="Source" Value="{StaticResource ResourceKey=icMoneyBillGreen}" />
+                                <Setter TargetName="TextBlock" Property="Foreground" Value="Black" />
+                                <Setter TargetName="TextBlock" Property="FontWeight" Value="Medium" />
+                                <Setter TargetName="MainBorder" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+       TargetType="RadioButton"
+       x:Key="KhoThuoc">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Height="95"
+                            x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icWarehouse}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Quản lí kho thuốc"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="IconImage" Property="Source" Value="{StaticResource ResourceKey=icWarehouseGreen}" />
+                                <Setter TargetName="TextBlock" Property="Foreground" Value="Black" />
+                                <Setter TargetName="TextBlock" Property="FontWeight" Value="Medium" />
+                                <Setter TargetName="MainBorder" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
+       TargetType="RadioButton"
+       x:Key="BacSi">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Height="95"
+                            x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 15 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icMedicalDoctor}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Hồ sơ bác sĩ"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="IconImage" Property="Source" Value="{StaticResource ResourceKey=icMedicalDoctorGreen}" />
+                                <Setter TargetName="TextBlock" Property="Foreground" Value="Black" />
+                                <Setter TargetName="TextBlock" Property="FontWeight" Value="Medium" />
+                                <Setter TargetName="MainBorder" Property="Background" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style
+       TargetType="{x:Type Button}"
+       x:Key="LogOut">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate >
+                        <Border Height="100"
+                            x:Name="MainBorder"
+                            CornerRadius="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}">
+                            <StackPanel Margin="15 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                <Image x:Name="IconImage"
+                                   Source="{StaticResource icLogout}"
+                                   Height="50"
+                                   Width="50"
+                                   HorizontalAlignment="Left"
+                                   Margin="5 0 0 0"/>
+                                <TextBlock x:Name="TextBlock"
+                                       Text="Đăng xuất"
+                                       Foreground="White"
+                                       FontFamily="Segoe UI"
+                                       FontWeight="Regular"
+                                       FontSize="22"
+                                       VerticalAlignment="Center"
+                                       Margin="20 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

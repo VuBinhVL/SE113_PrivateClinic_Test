@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba23bf4d51ff43609d29054a06e1e7c9" Name="Diagram1">
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.BACSI" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.BAOCAODOANHTHU" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.BAOCAOSUDUNGTHUOC" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.BENHNHAN" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.CACHDUNG" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.CT_BCDT" Width="1.5" PointX="7.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.CT_PKB" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.CT_PNT" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.CHUCNANG" Width="1.5" PointX="0.75" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.DVT" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.HOADON" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.LOAIBENH" Width="1.5" PointX="0.75" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.LOAITHUOC" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.NGUOIDUNG" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.NHOMNGUOIDUNG" Width="1.5" PointX="0.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.PHANQUYEN" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.PHIEUKHAMBENH" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.PHIEUNHAPTHUOC" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.THAMSO" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYPHONGMACHTUModel.THUOC" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_NGUOIDUNG_BACSI" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_PHIEUKHAMBENH_MaBS" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_CT_BCDT_MaBCDT" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_BAOCAOSUDUNGTHUOC_THUOC" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_HOADON_MaBN" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_PHIEUKHAMBENH_MaBN" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_THUOC_MaCachDung" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_CT_BCDT_SoHD" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_CT_PKB_PHIEUKHAMBENH" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_CT_PKB_THUOC" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_CT_PNT_MaThuoc" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_CT_PNT_SoPhieuNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_PHANQUYEN_CHUCNANG" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_THUOC_MaDVT" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_HOADON_MaPKB" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_PHIEUKHAMBENH_MaLoaiBenh" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_THUOC_MaLoaiThuoc" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_NGUOIDUNG_NHOMNGUOIDUNG" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYPHONGMACHTUModel.FK_PHANQUYEN_NHOMNGUOIDUNG" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="PrivateClinic.View.HoSoBacSi.DoiMatKhauView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrivateClinic.View.HoSoBacSi"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="Sugoe UI"
+             FontSize="22"
+             FontWeight="SemiBold"
+             d:DesignWidth="990"
+             d:DesignHeight ="530"
+             mc:Ignorable="d">
+    <Grid Background="White">
+        <!--  Đổi mật khẩu  -->
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--Tiêu đề-->
+            <Border CornerRadius="10"
+                    Width="940"
+                    Height="60"
+                    VerticalAlignment="Bottom"
+                    Background="#43A07C">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="{StaticResource icLock1}"
+                           Width="45"
+                           Height="45"/>
+                    <TextBlock  Text="Đổi mật khẩu"
+                               Margin="15,3,0,0"
+                               FontSize="30"
+                               VerticalAlignment="Center"
+                               Foreground="#FFFFFF"/>
+                </StackPanel>
+            </Border>
+
+            <!--Mật khẩu cũ-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Mật khẩu hiện tại:"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="40,0,0,0"
+                           />
+                <PasswordBox
+                    x:Name="txtMKcu"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Width="660"
+                    materialDesign:HintAssist.Hint="Mật khẩu hiện tại"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}" />
+            </Grid>
+
+            <!--Mật khẩu mới-->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Mật khẩu mới:"
+                           VerticalAlignment="Center"
+                           Margin="40,0,0,0"
+                           HorizontalAlignment="Left"/>
+                <PasswordBox
+                    x:Name="txtMKmoi"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Width="660"
+                    materialDesign:HintAssist.Hint="Mật khẩu mới"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}" />
+            </Grid>
+
+            <!--Nhập lại mật khẩu-->
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Nhập lại mật khẩu mới:"
+                           VerticalAlignment="Center"
+                           Margin="40,0,0,0"
+                           HorizontalAlignment="Left"/>
+                <PasswordBox
+                    x:Name="txtNhapLai"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Width="660"
+                    materialDesign:HintAssist.Hint="Nhập lại mật khẩu mới"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}" />
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Button Width="360"
+                        Height="50"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Command="{Binding ChangePasswordCommand}"
+                        FontSize="25">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border BorderBrush="Transparent"
+                                        Background="#EE3C46"
+                                        CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="5"
+                                                          Color="Black"
+                                                          Opacity="0.5"
+                                                          BlurRadius="5"/>
+                                    </Border.Effect>
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      Content="Đổi mật khẩu"/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

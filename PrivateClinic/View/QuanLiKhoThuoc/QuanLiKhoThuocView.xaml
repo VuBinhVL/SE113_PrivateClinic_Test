@@ -1,0 +1,171 @@
+﻿<Page
+    x:Class="PrivateClinic.View.QuanLiKhoThuoc.QuanLiKhoThuocView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:PrivateClinic.View.QuanLiKhoThuoc"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="QuanLiKhoThuocViewPage"
+    Title="QuanLiKhoThuocView"
+    d:DesignHeight="710"
+    d:DesignWidth="990"
+    Background="Transparent"
+    FontFamily="Segoe UI"
+    TextElement.FontSize="22"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Sugoe UI" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="FontWeight" Value="Regular" />
+        </Style>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Border
+        Padding="10"
+        Background="White"
+        BorderBrush="DarkGray"
+        BorderThickness="0.7"
+        CornerRadius="20">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="60" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border
+                    Height="120"
+                    VerticalAlignment="Top"
+                    Background="White">
+                    <TextBlock
+                        Margin="40,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="35"
+                        FontWeight="Bold"
+                        Foreground="#348F6C"
+                        Text="Quản lý kho thuốc" />
+                </Border>
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 20 0" Orientation="Horizontal">
+                    <Border
+                        Width="60"
+                        Height="60"
+                        Margin="0,0,7,0"
+                        CornerRadius="50">
+                        <Border.Background>
+                            <ImageBrush ImageSource="{Binding ImageSource}" />
+                        </Border.Background>
+                    </Border>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+
+                        <!--Tên user-->
+                        <TextBlock Text="{Binding TenNV}"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   FontFamily="Segoe UI"/>
+                        <TextBlock Text="{Binding ChucVu}"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   FontFamily="Segoe UI"/>
+                    </StackPanel>
+
+                </StackPanel>
+
+
+            </Grid>
+            <StackPanel
+                Grid.Row="1"
+                Margin="35,0,35,0"
+                VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal">
+
+                    <!--  Nút xem kho thuốc  -->
+                    <Button
+                        x:Name="btnKhoThuoc"
+                        Click="Button_Click"
+                        Width="230"
+                        Height="40"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Background="#F5F5F5"
+                        BorderBrush="Transparent"
+                        BorderThickness="2"
+                        FontSize="22"
+                        Command="{Binding SwitchViewCommand}"
+                        CommandParameter="KhoThuoc">
+                        <Button.Content>
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                FontWeight="Regular"
+                                Foreground="#000000"
+                                Text="Kho thuốc" />
+                        </Button.Content>
+                    </Button>
+
+                    <!--  Nút xem quy định thuốc  -->
+                    <Button
+                        Visibility="{Binding SetQuanLy}"
+                        x:Name="btnqd"
+                        Click="Button_Click"
+                        Width="230"
+                        Height="40"
+                        Margin="25,0,0,0"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"
+                        Background="#F5F5F5"
+                        BorderBrush="Transparent"
+                        BorderThickness="2"
+                        Command="{Binding SwitchViewCommand}"
+                        CommandParameter="Quydinh"
+                        FontSize="22">
+                        <Button.Content>
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                FontWeight="Regular"
+                                Foreground="#000000"
+                                Text="Quy định" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+                <Border
+                    Margin="0,1,0,0"
+                    VerticalAlignment="Bottom"
+                    BorderBrush="#808080"
+                    BorderThickness="1" />
+            </StackPanel>
+
+            <Frame x:Name="Main" Grid.Row="2" />
+
+            <ContentControl Grid.Row="2" Content="{Binding CurrentView}" />
+
+
+        </Grid>
+    </Border>
+
+</Page>

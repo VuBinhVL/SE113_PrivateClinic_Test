@@ -1,0 +1,192 @@
+﻿<UserControl x:Class="PrivateClinic.View.HoSoBacSi.PhanQuyenUS"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:PrivateClinic.View.HoSoBacSi"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             FontFamily="Sugoe UI"
+             FontSize="22"
+             x:Name="PhanQuyenViewPage"
+             FontWeight="Regular"
+             d:DesignHeight="530" d:DesignWidth="990">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+
+        <!--Nút thêm + tìm kiếm bác sĩ-->
+        <StackPanel Orientation="Horizontal"
+                    Margin="18,0,0,0"
+                    Grid.Row="0">
+
+
+            <!--Nút thêm mới bác sĩ-->
+            <Button 
+                Content="         Thêm nhóm "
+                FontSize="20"
+                FontWeight="Bold"
+                Margin="758 50 5 0"
+                Width="170" Height="50"
+                HorizontalAlignment="Right"
+            >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border BorderBrush="Transparent"
+                                    Background="#348F6C"
+                                    CornerRadius="10">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="5"
+                                                      Color="Black"
+                                                      Opacity="0.5"
+                                                      BlurRadius="5"/>
+                                </Border.Effect>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                            <Image
+                                HorizontalAlignment="Left"
+                                Source="{StaticResource icAdd}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=PhanQuyenViewPage}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+            </Button>
+        </StackPanel>
+
+        <Border
+            Grid.Row="1"
+            Margin="11,15,0,0"
+            Width="920"
+            Height="50"
+            CornerRadius="10"
+            VerticalAlignment="Top"
+            Background="#D9D9D9">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--STT-->
+                <Grid Grid.Column="0">
+                    <TextBlock HorizontalAlignment="Center"
+                               FontWeight="DemiBold"
+                               Text="Tên chức năng"
+                               Margin="0,0,12,0"
+                               VerticalAlignment="Center" />
+                </Grid>
+
+                <!--HoTen-->
+                <Grid Grid.Column="1">
+                    <TextBlock HorizontalAlignment="Center"
+                               FontWeight="DemiBold"
+                               Text="Nhóm người dùng"
+                               Margin="12,0,0,0"
+                               VerticalAlignment="Center" />
+                </Grid>
+
+                <!--Ngày khám-->
+                <Grid Grid.Column="2">
+                    <TextBlock HorizontalAlignment="Center"
+                               Margin="2,0,0,0"
+                               FontWeight="DemiBold"
+                               Text="Thao tác"
+                               VerticalAlignment="Center" />
+                </Grid>
+
+              
+            </Grid>
+        </Border>
+
+        <!--Chi tiết danh sách-->
+        <Grid Grid.Row="2">
+            <ListView FontSize="22"
+                      Focusable="True"
+                      x:Name="ListViewPQ"
+                      Margin="20,15,0,0"
+                      FontWeight="SemiBold"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ItemsSource="{Binding listPQ}" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="924" Height="55" Margin="10 0 0 0" CornerRadius="10" Background="White">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="400"/>
+                                    <ColumnDefinition Width="400"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <!--STT-->
+                                <Grid Grid.Column="0">
+                                    <TextBlock Text="{Binding ChucNang}"
+                                               HorizontalAlignment="Left"
+                                               Margin="50,0,10,0"
+                                               VerticalAlignment="Center"
+                                               FontFamily="Segoe UI"
+                                               FontSize="20" />
+
+                                </Grid>
+
+                                <!--Tên BN-->
+                                <Grid Grid.Column="1">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Margin="15,0,0,0"
+                                        Text="{Binding TenNhom}"
+                                        VerticalAlignment="Center"
+                                        FontFamily="Segoe UI"
+                                        FontSize="20" />
+
+                                </Grid>
+
+                                <!--NgayKham-->
+                                <Grid Grid.Column="2">
+                                    <Button  Command="{Binding EditCommand}" CommandParameter="{Binding}" Click="EditButton_Click" Margin="0 0 35 4" Width="50" Height="50" HorizontalAlignment="Right" >
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid>
+                                                    <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                             
+
+                                <Border BorderBrush="Black"
+                                        BorderThickness="0 0 0 1"
+                                        Margin="1,0,2,0"
+                                        Grid.ColumnSpan="7" />
+                            </Grid>
+                        </Border>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,327 @@
+﻿<UserControl x:Class="PrivateClinic.View.QuanLiTiepDon.QuanLiTiepDonView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PrivateClinic.View.QuanLiTiepDon"
+             xmlns:vm="clr-namespace:PrivateClinic.ViewModel.QuanLiTiepDon"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:convert="clr-namespace:PrivateClinic.Converters"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+
+             mc:Ignorable="d"
+             d:DesignHeight="750" d:DesignWidth="990"
+             x:Name="QuanLiTiepDonViewPage"
+             >
+    <UserControl.Resources>
+        <convert:IndexConverter x:Key="indexConverter"/>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding AddCommand}"
+                    CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Border Background="White" CornerRadius="25">
+            <Grid>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="230"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                        <!--SỐ LƯỢNG BỆNH NHÂN TỐI ĐA-->
+                        <StackPanel Margin="23 32 19 20" Orientation="Horizontal">
+                            <TextBlock Text="Số lượng bệnh nhân tối đa trong ngày:"
+                                       FontFamily="Segoe UI"
+                                       FontSize="22"
+                                       FontWeight="SemiBold"
+                                       VerticalAlignment="Center"
+                                       Margin="0 0 0 10"/>
+                            <Border Margin="55 0 0 0" CornerRadius="10" Background="#D9D9D9" Width="80" Height="45">
+                                <Grid>
+                                    <TextBox x:Name="txbMaxBN" IsEnabled="False" BorderThickness="0" HorizontalAlignment="Center"  Width="50" Height="40" VerticalAlignment="Center" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger >
+                                                <i:InvokeCommandAction Command="{Binding LoadSLBNCommand}"
+                                                                       CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                    <Button Visibility="{Binding SetQuanLy}" IsEnabled="False" x:Name="btnUp" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid>
+                                                    <Image Source="{StaticResource icArrowUp}"  Stretch="UniformToFill"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding EditUpSLBNCommand}"
+                                                                       CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                    <Button Visibility="{Binding SetQuanLy}"  IsEnabled="False" x:Name="btnDown" Width="20" Height="20" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid>
+                                                    <Image Source="{StaticResource icArrowDown}" Stretch="UniformToFill"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <i:InvokeCommandAction Command="{Binding EditDownSLBNCommand}"
+                                                                       CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                            <Button Visibility="{Binding SetQuanLy}" ToolTip="Sửa số lượng bệnh nhân (Sửa xong phải lưu)" Margin="20 0"  Width="50" Height="50" HorizontalAlignment="Right" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding EditSLBNCommand}"
+                                                               CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                            <Button IsEnabled="False" x:Name="btnSave"
+                                    Visibility="Hidden"
+                                    Width="50" Height="50" HorizontalAlignment="Right" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Image Source="{StaticResource icSave}" Stretch="UniformToFill"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding SaveSLBNCommand}"
+                                                               CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                        <!--SỐ LƯỢNG BỆNH NHÂN ĐÃ KHÁM HÔM NAY-->
+                        <StackPanel Margin="23 0 19 0" Orientation="Horizontal">
+                            <TextBlock Text="Số lượng bệnh nhân đã tiếp đón hôm nay:"
+                                       FontFamily="Segoe UI"
+                                       FontSize="22"
+                                       FontWeight="SemiBold"
+                                       VerticalAlignment="Center"
+
+                                       Margin="0 10 0 10"/>
+                            <Border Margin="20 0 0 0" CornerRadius="10" Background="#D9D9D9" Width="80" Height="45">
+
+                                <TextBox IsEnabled="False"
+                                         x:Name="txbSLBNDK"
+                                         Margin="25,4,0,0"
+                                         HorizontalAlignment="Center"
+                                         Width="60" Height="45"
+                                         FontSize="25"
+                                         VerticalAlignment="Center"
+                                         Text="{Binding SoLuongBenhNhanDaTiepDon}">
+
+                                </TextBox>
+
+                            </Border>
+                        </StackPanel>
+                        <!--THANH TÌM KIẾM-->
+                        <DockPanel Width="960">
+                            <Border Width="590" Height="60" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Margin="23 13 0 0" CornerRadius="10">
+                                <Grid>
+                                    <TextBox
+                                        Margin="20 0 0 0"
+                                        HorizontalAlignment="Left"
+                                        materialDesign:HintAssist.Hint="Nhập họ tên bệnh nhân cần tìm"
+                                        FontFamily="Segoe UI"
+                                        FontSize="20"
+                                        FontStyle="Italic"
+                                        VerticalAlignment="Center"
+                                        BorderThickness="0"
+                                        Width="520"
+                                        Height="40"
+                                        x:Name="txbSearch"
+                                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                                        >
+                                    </TextBox>
+
+                                    <Button Margin="0 0 5 0"  Width="40" Height="40" HorizontalAlignment="Right"
+                                            Command="{Binding ElementName=listBox, Path=DataContext.SearchCommand}">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid>
+                                                    <Image Source="{StaticResource icSearch}" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                            <!--NÚT THÊM-->
+                            <Button
+                                ToolTip="Thêm bệnh nhân"
+                                Content="       Thêm (F1)" FontSize="22" FontFamily="Segoe UI" FontWeight="Bold" Margin="5 0 5 0"  Width="170" Height="50" HorizontalAlignment="Right" >
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid>
+                                            <Border BorderBrush="Transparent" Background="#348F6C" CornerRadius="10">
+                                                <Border.Effect>
+                                                    <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="5"/>
+                                                </Border.Effect>
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <Image HorizontalAlignment="Left" Source="{StaticResource icAdd}"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding AddCommand}"
+                                                               CommandParameter="{Binding ElementName=QuanLiTiepDonViewPage}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+                <!--HEADER -->
+                <Grid Grid.Row="1">
+                    <Border Margin="10,20,0,0" Width="924" Height="50" CornerRadius="10" Background="#D9D9D9">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="120"/>
+
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <TextBlock HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="20" FontWeight="DemiBold" Text="STT" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBlock HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="20" FontWeight="DemiBold" Text="Tên bệnh nhân" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Grid.Column="2">
+                                <TextBlock HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="20" FontWeight="DemiBold" Text="Giới tính" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <TextBlock HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="20" FontWeight="DemiBold" Text="Ngày sinh" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Grid.Column="4">
+                                <TextBlock HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="20" FontWeight="DemiBold" Text="Địa chỉ" VerticalAlignment="Center" />
+                            </Grid>
+                            <Grid Grid.Column="5">
+                                <TextBlock HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="20" FontWeight="DemiBold" Text="Thao tác" VerticalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+                <!--Listview item-->
+                <Grid Grid.Row="2">
+                    <ListView
+                        x:Name="ListViewBN"
+                        ItemsSource="{Binding FilterDSBN}"
+                        Margin="20 0 0 0"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=4}"  >
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Width="924" Height="55" Margin="10 0 0 0" CornerRadius="10" Background="White">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="200"/>
+                                            <ColumnDefinition Width="90"/>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="120"/>
+
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+
+                                            <TextBlock x:Name="STT" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem},
+                                                       Converter={StaticResource indexConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                       FontFamily="Segoe UI" FontSize="20" />
+                                        </Grid>
+                                        <Grid Grid.Column="1">
+                                            <TextBlock x:Name="HoTen"  HorizontalAlignment="Center" Text="{Binding HoTen}" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="20" />
+
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <TextBlock x:Name="GioiTinh" Text="{Binding GioiTinh}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="20" />
+
+                                        </Grid>
+
+                                        <Grid Grid.Column="3">
+                                            <TextBlock x:Name="NgSinh" Text="{Binding  NamSinh,StringFormat=dd/MM/yyyy}" HorizontalAlignment="Center" VerticalAlignment="Center"  FontFamily="Segoe UI" FontSize="20"/>
+                                        </Grid>
+                                        <Grid Grid.Column="4">
+                                            <TextBlock x:Name="Diachi" Text="{Binding DiaChi}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="20" />
+                                        </Grid>
+                                        <Grid Grid.Column="5">
+                                            <StackPanel
+                                                Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Button ToolTip="Khám bệnh " Command="{Binding KhamBNCommand}" CommandParameter="{Binding}" Click="KhamBNButton_Click" Margin="0 0 15 4" Width="50" Height="50" HorizontalAlignment="Right" >
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Grid>
+                                                                <Image Source="{StaticResource icCure}" Stretch="UniformToFill"/>
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                                <Button ToolTip="Sửa thông tin bệnh nhân " Command="{Binding EditBNCommand}" CommandParameter="{Binding}" Click="EditButton_Click" Margin="0 0 15 4" Width="50" Height="50" HorizontalAlignment="Right" >
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Grid>
+                                                                <Image Source="{StaticResource icRepair}" Stretch="UniformToFill"/>
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                                <Button ToolTip="Xóa bệnh nhân " Command="{Binding DeleteCommand}" CommandParameter="{Binding}"
+                                                        Margin="0 0 0 4" Width="50" Height="50" Padding="0 0 0 10" HorizontalAlignment="Right" Click="DeleteButton_Click">
+                                                    <Button.Template>
+                                                        <ControlTemplate TargetType="Button">
+                                                            <Grid>
+                                                                <Image Source="{StaticResource icDelete}" Stretch="UniformToFill"/>
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Border BorderBrush="Black" BorderThickness="0 0 0 1" Margin="0,0,10,0" Grid.ColumnSpan="7" />
+                                    </Grid>
+                                </Border>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

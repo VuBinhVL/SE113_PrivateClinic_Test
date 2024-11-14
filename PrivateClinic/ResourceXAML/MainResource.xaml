@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:BangDieuKhienVM="clr-namespace:PrivateClinic.ViewModel.BangDieuKhien"
+                    xmlns:QuanLiTiepDonVM="clr-namespace:PrivateClinic.ViewModel.QuanLiTiepDon"
+                    xmlns:ThanhToanVM="clr-namespace:PrivateClinic.ViewModel.ThanhToan"
+                    xmlns:MainViewVM="clr-namespace:PrivateClinic.ViewModel.OtherViewModels">
+
+    <MainViewVM:MainViewModel x:Key="MainVM"/>
+    <BangDieuKhienVM:BangDieuKhienViewModel x:Key="BangDieuKhienVM"/>
+    <QuanLiTiepDonVM:QuanLiTiepDonViewModel x:Key="QuanLiTiepDonVM"/>
+    <ThanhToanVM:ThanhToanViewModel x:Key="ThanhToanVM"/>
+
+</ResourceDictionary>

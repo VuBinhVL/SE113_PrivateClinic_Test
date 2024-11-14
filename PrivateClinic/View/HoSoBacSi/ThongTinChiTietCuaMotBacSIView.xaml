@@ -1,0 +1,314 @@
+﻿<Window x:Class="PrivateClinic.View.HoSoBacSi.ThongTinChiTietCuaMotBacSIView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrivateClinic.View.HoSoBacSi"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Width="750"
+        Height="380"
+        AllowsTransparency="True"
+        Background="Transparent"
+        FontFamily="Sugoe UI"
+        ResizeMode="NoResize"
+        FontSize="22"
+        FontWeight="Regular"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        x:Name="DetailBSViewPage"
+        mc:Ignorable="d">
+    <Border
+        Background="White"
+        CornerRadius="12">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="70"/>
+                <RowDefinition  />
+            </Grid.RowDefinitions>
+
+            <!--  Vùng nút thoát-->
+            <Border
+                Grid.Row="0"
+                Background="#348F6C"
+                CornerRadius="12,12,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="700" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Foreground="#FFFFFF"
+                        Text="Thông tin bác sĩ" />
+
+                    <!--  Nút exit  -->
+                    <materialDesign:PackIcon Kind="CloseThick"
+                                             Foreground="#7E542E"
+                                             Height="24" Width="24"
+                                             Margin="10,5,0,0"
+                                             Grid.Column="1">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding ExitCommand}"
+                                                       CommandParameter="{Binding ElementName=DetailBSViewPage}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <!--Nút xóa-->
+                <Button ToolTip="Xóa bác sĩ "
+                        Margin="20 0 150 0"
+                        Width="50"
+                        Height="50"
+                        HorizontalAlignment="Right" >
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Image Source="{StaticResource icDelete}"
+                                       Stretch="UniformToFill"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding DeleteCommand}"
+                                                   CommandParameter="{Binding ElementName=DetailBSViewPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <!--Nút sửa-->
+                <Button ToolTip="Sửa thông tin bác sĩ (Sửa xong phải lưu)"
+                        Margin="20 0 79 0"
+                        Width="50"
+                        Height="50" HorizontalAlignment="Right" >
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Image Source="{StaticResource icRepair}"
+                                       Stretch="UniformToFill"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding EditCommand}"
+                                                   CommandParameter="{Binding ElementName=DetailBSViewPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+                <!--Nút lưu-->
+                <Button IsEnabled="False"
+                        Visibility="Hidden"
+                        x:Name="btnSave"
+                        Margin="0 5 10 4"
+                        Width="50"
+                        Height="50"
+                        Padding="0 0 0 10"
+                        HorizontalAlignment="Right" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Image Source="{StaticResource icSave}"
+                                       Stretch="UniformToFill"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SaveCommand}"
+                                                   CommandParameter="{Binding ElementName=DetailBSViewPage}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!--Mã bác sĩ-->
+                <TextBlock
+                    Width="100"
+                    Height="25"
+                    Margin="40,20,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    FontWeight="Bold"
+                    IsEnabled="True"
+                    x:Name="MaBstxb"
+                    Text="{Binding formatMaBS}"/>
+
+                <!--  Ảnh đại diện  -->
+                <Border
+                    Width="120"
+                    Height="146"
+                    Margin="15,0,15,0"
+                    VerticalAlignment="Center"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    CornerRadius="70">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding ImageSource}"/>
+                    </Border.Background>
+                </Border>
+
+
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+
+                    </Grid.RowDefinitions>
+                    <!--  Chỗ binding họ và tên  -->
+                    <TextBox Grid.Row="0"
+                             Width="260"
+                             Height="53"
+                             Margin="20,0,0,0"
+                             HorizontalAlignment="Left"
+                             materialDesign:HintAssist.Hint="Họ và tên"
+                             FontWeight="SemiBold"
+                             IsReadOnly="True"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             x:Name="HoTentxb"
+                             Text="{Binding HoTen}" />
+
+                    <!--  Chỗ SĐT  -->
+                    <TextBox
+                        Grid.Row="1"
+                        Width="260"
+                        Height="53"
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        materialDesign:HintAssist.Hint="Số điện thoại"
+                        FontWeight="SemiBold"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        x:Name="SDTtxb"
+                        Text="{Binding SDT}"  />
+
+                    <!--  Chỗ binding ngày sinh  -->
+
+                    <DatePicker
+                        Grid.Row="2"
+                        x:Name="Ngaysinhtxb"
+                        Width="240"
+                        Height="53"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                        FontWeight="SemiBold"
+                        Text="{Binding NgaySinh,StringFormat='{}{0:dd/MM/yyyy}'}"
+                        HorizontalAlignment="Left"
+                        IsEnabled="False"
+                        materialDesign:HintAssist.Hint="Ngày sinh"
+                        VerticalContentAlignment="Center" Margin="20,0,0,0"
+                        />
+                    <!--  Chỗ binding địa chỉ  -->
+                    <TextBox
+                        Grid.Row="3"
+                        Width="260"
+                        Height="53"
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        materialDesign:HintAssist.Hint="Địa chỉ"
+                        FontWeight="SemiBold"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        x:Name="DiaChitxb"
+                        Text="{Binding DiaChi}"  />
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+
+                    </Grid.RowDefinitions>
+
+                    <!--  Chỗ binding giới tính  -->
+                    <ComboBox
+                        x:Name="GioiTinhtxb"
+                        Width="239"
+                        Height="53"
+                        HorizontalAlignment="Left"
+                        Margin="20,0,0,0"
+                        IsEnabled="False"
+                        FontWeight="SemiBold"
+                        SelectedValuePath="Content"
+                        VerticalContentAlignment="Center"
+                        Text="{Binding GioiTinh}"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                        materialDesign:HintAssist.Hint="Chọn giới tính">
+                        <ComboBoxItem Content="Nam"/>
+                        <ComboBoxItem Content="Nữ"/>
+                    </ComboBox>
+
+
+                    <!--  Chỗ binding email  -->
+                    <TextBox
+                        Grid.Row="1"
+                        Width="260"
+                        Height="53"
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        materialDesign:HintAssist.Hint="Email"
+                        FontWeight="SemiBold"
+                        IsReadOnly="True"
+                        Text="{Binding Email}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        x:Name="Emailtxb"
+                        TextWrapping="Wrap"
+                        />
+
+                    <!--  Chỗ binding ngày vào làm  -->
+
+                    <DatePicker
+                        Grid.Row="2"
+                        x:Name="NgayVaoLamtxb"
+                        Width="240"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                        Height="53"
+                        FontWeight="SemiBold"
+                        HorizontalAlignment="Left"
+                        IsEnabled="False"
+                        Text="{Binding NgayVL,StringFormat='{}{0:dd/MM/yyyy}'}"
+                        materialDesign:HintAssist.Hint="Ngày vào làm"
+                        VerticalContentAlignment="Center" Margin="20,0,0,0"
+                        />
+
+                    <!--  Chỗ binding bằng cấp  -->
+                    <TextBox
+                        Grid.Row="3"
+                        Width="260"
+                        Height="53"
+                        Margin="20,0,0,0"
+                        HorizontalAlignment="Left"
+                        materialDesign:HintAssist.Hint="Bằng cấp"
+                        FontWeight="SemiBold"
+                        IsReadOnly="True"
+                        Text="{Binding BangCap}"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        x:Name="BangCaptxb"  />
+
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Border>
+</Window>

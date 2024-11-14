@@ -1,0 +1,156 @@
+﻿<Window
+    x:Class="PrivateClinic.View.HoSoBacSi.ThemNhomNguoiDungView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+   xmlns:local="clr-namespace:PrivateClinic.View.HoSoBacSi"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="ThemNhomNguoiDungViewPage"
+    Title="ThongTinThuocView"
+    Height="320"
+    Width="750"
+     WindowStyle="None"
+    ResizeMode="NoResize"
+    Background="Transparent"
+    AllowsTransparency="True"
+    FontFamily="Segoe UI"
+    TextElement.FontSize="19"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    mc:Ignorable="d">
+
+    <Border
+        Background="White"
+        BorderBrush="DarkGray"
+        BorderThickness="0.7"
+        CornerRadius="14">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--  Vùng nút thoát  -->
+            <Border
+                Background="#348F6C"
+                BorderBrush="#348F6C"
+                BorderThickness="0.7"
+                CornerRadius="14 14 0 0">
+
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="450" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        Height="38"
+                        Margin="20,0,0,0"
+                        VerticalAlignment="Center"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Foreground="#FFFFFF"
+                        Text="Thêm nhóm người dùng" />
+
+                    <!--  Nút exit  -->
+                    <materialDesign:PackIcon Kind="CloseThick" Foreground="#7E542E" Margin="0 5 5 0" Height="24" Width="24" Grid.Column="1" HorizontalAlignment="Right">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding ExitCommand}"
+                 CommandParameter="{Binding ElementName=ThemNhomNguoiDungViewPage}"></i:InvokeCommandAction>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </materialDesign:PackIcon>
+                </Grid>
+            </Border>
+
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+
+                    </Grid.RowDefinitions>
+                    <!--  Chỗ binding Ma thuoc  -->
+                    <StackPanel>
+                        <TextBlock
+     Grid.Row="0"
+     Width="250"
+     Height="50"
+     Margin="80,10,0,0"
+     Padding="0,10,0,0"
+     HorizontalAlignment="Left"
+     VerticalAlignment="Bottom"
+     materialDesign:HintAssist.Hint="Mã thuốc"
+     FontWeight="SemiBold"
+     Text="Nhóm người dùng mới:"
+     x:Name="MaThuoc"
+            
+      />
+
+                        <!--  Chỗ Ten thuoc  -->
+                        <TextBox
+     Grid.Row="0"
+     Width="350"
+     Height="50"
+     Margin="80,0,0,70"
+     Padding="0,0,0,0"
+     HorizontalAlignment="Left"
+     materialDesign:HintAssist.Hint="Nhập nhóm người dùng mới"
+     FontWeight="SemiBold"
+
+     x:Name="NhomNDmoi"
+     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+      />
+                    </StackPanel>
+
+                    <Grid Grid.Row="1">
+                        <Button
+    Content="       Lưu "
+    FontSize="22"
+    FontFamily="Segoe UI"
+    FontWeight="Bold"
+    Margin="5 0 35 0"
+    Width="150"
+    Height="50"
+    x:Name="saveBtn"
+    HorizontalAlignment="Right" >
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Grid>
+                                        <Border BorderBrush="Transparent" Background="#364C9A" CornerRadius="10">
+                                            <Border.Effect>
+                                                <DropShadowEffect ShadowDepth="5" Color="Black" Opacity="0.5" BlurRadius="5"/>
+                                            </Border.Effect>
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <Image HorizontalAlignment="Left" Source="{StaticResource icSaveWhite}"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <i:InvokeCommandAction Command="{Binding SaveCommand}"
+                                   CommandParameter="{Binding ElementName=ThemNhomNguoiDungViewPage}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                    </Grid>
+                </Grid>
+
+
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>
