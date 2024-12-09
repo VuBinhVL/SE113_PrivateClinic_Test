@@ -981,6 +981,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\NUnit.Analyzers.4.4.0\analyzers\dotnet\cs\nunit.analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AutoIT\HoSoBacSi\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
