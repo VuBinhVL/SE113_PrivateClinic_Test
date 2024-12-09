@@ -109,5 +109,31 @@ namespace PrivateClinic.UnitTest.HoSoBacSi
 			// Assert
 			Assert.That(_viewModel.NgayVLError, Is.EqualTo(expectedError));
 		}
+
+		[TestCase("Đồng Nai", "")]
+		[TestCase("", "Địa chỉ không được để trống!")]
+		public void CheckAddress(string diachi, string expectedError)
+		{
+			//Arrange
+			_viewModel.DiaChi = diachi;
+
+			// Act
+			_viewModel.ValidateDiaChi();
+			// Assert
+			Assert.That(_viewModel.DiaChiError, Is.EqualTo(expectedError));
+		}
+
+		[TestCase("Tiến sĩ", "")]
+		[TestCase("", "Bằng cấp không được để trống!")]
+		public void CheckDegree(string bangcap, string expectedError)
+		{
+			//Arrange
+			_viewModel.BangCap = bangcap;
+
+			// Act
+			_viewModel.ValidateBangCap();
+			// Assert
+			Assert.That(_viewModel.BangCapError, Is.EqualTo(expectedError));
+		}
 	}
 }
