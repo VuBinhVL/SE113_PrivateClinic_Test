@@ -476,11 +476,16 @@ namespace PrivateClinic.ViewModel.HoSoBacSiVM
 			}
 		}
 
-		private void ValidateBirth()
+		public void ValidateBirth()
 		{
 			if (NgaySinh > DateTime.UtcNow)
 			{
 				NgaySinhError = "Ngày sinh không hợp lệ!";
+				_canAccept[5] = false;
+			}
+			else if (NgaySinh == null)
+			{
+				NgaySinhError = "Ngày sinh không được để trống!";
 				_canAccept[5] = false;
 			}
 			else
@@ -492,9 +497,14 @@ namespace PrivateClinic.ViewModel.HoSoBacSiVM
 
 		public void ValidateNgayVL()
 		{
-			if (NgayVL < NgaySinh)
+			if (NgayVL.Value < NgaySinh.Value)
 			{
 				NgayVLError = "Ngày vào làm phải lớn hơn ngày sinh!";
+				_canAccept[6] = false;
+			}
+			else if (NgayVL == null)
+			{
+				NgayVLError = "Ngày vào làm không được để trống!";
 				_canAccept[6] = false;
 			}
 			else
