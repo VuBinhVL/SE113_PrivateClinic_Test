@@ -497,7 +497,7 @@ namespace PrivateClinic.ViewModel.HoSoBacSiVM
 
 		public void ValidateNgayVL()
 		{
-			if (NgayVL.Value < NgaySinh.Value)
+			if (NgayVL < NgaySinh)
 			{
 				NgayVLError = "Ngày vào làm phải lớn hơn ngày sinh!";
 				_canAccept[6] = false;

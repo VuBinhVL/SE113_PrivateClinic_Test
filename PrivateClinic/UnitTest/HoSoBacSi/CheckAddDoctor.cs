@@ -100,6 +100,7 @@ namespace PrivateClinic.UnitTest.HoSoBacSi
 			{
 				ngayVaoLam = DateTime.Parse(startDate);
 			}
+			_viewModel.NgaySinh = birthDay;
 			_viewModel.NgayVL = ngayVaoLam;
 
 			// Act
