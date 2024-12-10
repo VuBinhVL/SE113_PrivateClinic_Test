@@ -118,7 +118,7 @@ namespace PrivateClinic.ViewModel.QuanLiKhamBenhVM
         }
 
         //Hàm load dữ liệu lên list view 
-        void LoadData()
+        public void LoadData()
         {
             // Lấy tất cả phiếu khám bệnh
             ListPKB = new ObservableCollection<PHIEUKHAMBENH>(DataProvider.Ins.DB.PHIEUKHAMBENHs);
@@ -181,7 +181,7 @@ namespace PrivateClinic.ViewModel.QuanLiKhamBenhVM
         #endregion
 
         //Chức năng filter theo ngày
-        private void ApplyFilter()
+        public void ApplyFilter()
         {
             IEnumerable<BenhNhanDTO> filteredList = originalListBN;
 
