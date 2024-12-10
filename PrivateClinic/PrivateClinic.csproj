@@ -337,6 +337,9 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Web.Services.Description, Version=4.10.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Web.Services.Description.4.10.0\lib\net461\System.Web.Services.Description.dll</HintPath>
@@ -446,6 +449,8 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="UnitTest\HoSoBacSi\CheckAddDoctor.cs" />
+    <Compile Include="UnitTest\QuanLiBenhNhan\BenhNhanDaKhamViewModelTests.cs" />
+    <Compile Include="UnitTest\QuanLiKhamBenh\QuanLiTiepDonViewModelTests.cs" />
     <Compile Include="ViewModel\BangDieuKhien\BangDieuKhienViewModel.cs" />
     <Compile Include="ViewModel\HoSoBacSiVM\DanhSachBacSiViewModel.cs" />
     <Compile Include="ViewModel\HoSoBacSiVM\DoiMatKhauViewModel.cs" />
