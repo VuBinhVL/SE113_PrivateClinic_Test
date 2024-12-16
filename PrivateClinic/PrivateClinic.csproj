@@ -450,7 +450,7 @@
     </Compile>
     <Compile Include="UnitTest\HoSoBacSi\CheckAddDoctor.cs" />
     <Compile Include="UnitTest\QuanLiBenhNhan\BenhNhanDaKhamViewModelTests.cs" />
-    <Compile Include="UnitTest\QuanLiKhamBenh\QuanLiTiepDonViewModelTests.cs" />
+    <Compile Include="UnitTest\QuanLiKhamBenh\BenhNhanDangKhamViewModelTests.cs" />
     <Compile Include="ViewModel\BangDieuKhien\BangDieuKhienViewModel.cs" />
     <Compile Include="ViewModel\HoSoBacSiVM\DanhSachBacSiViewModel.cs" />
     <Compile Include="ViewModel\HoSoBacSiVM\DoiMatKhauViewModel.cs" />

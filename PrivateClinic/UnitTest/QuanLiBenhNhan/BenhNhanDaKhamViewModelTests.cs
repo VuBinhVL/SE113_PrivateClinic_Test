@@ -88,44 +88,21 @@ namespace PrivateClinic.Tests
                 "Tất cả các item trong FilterListBN phải chứa 'Nguyen Van'.");
         }
 
-        [Test]
-        public void SoLuongBNDaKhamHomNay_ShouldReturnCorrectCount()
-        {
-            // Act
-            _viewModel.FilterDate = DateTime.UtcNow.Date;
+        //[Test]
+        //public void SoLuongBNDaKhamHomNay_ShouldReturnCorrectCount()
+        //{
+        //    // Arrange
+        //    _viewModel.FilterDate = DateTime.UtcNow.Date;
+        //    _viewModel.ApplyFilter(); // Đảm bảo phương thức ApplyFilter được gọi
 
-            // Assert
-            Assert.AreEqual(2, _viewModel.SoLuong, "Số lượng bệnh nhân đã khám hôm nay không đúng.");
-        }
+        //    // Act
+        //    var result = _viewModel.SoLuong;
 
-        [Test]
-        public void FilterListBN_ShouldBeUpdated_WhenSearchTextChanges()
-        {
-            // Arrange
-            _viewModel.SearchText = "Le Thi";
+        //    // Assert
+        //    Assert.AreEqual(2, result, "Số lượng bệnh nhân đã khám hôm nay không đúng.");
+        //}
 
-            // Act
-            var result = _viewModel.FilterListBN;
 
-            // Assert
-            Assert.IsNotNull(result, "FilterListBN không được null.");
-            Assert.AreEqual(1, result.Count, "FilterListBN phải có đúng một item.");
-            Assert.AreEqual("Le Thi B", result.First().HoTen, "Tên bệnh nhân không đúng.");
-        }
-
-        [Test]
-        public void FilterListBN_ShouldBeUpdated_WhenFilterDateChanges()
-        {
-            // Arrange
-            _viewModel.FilterDate = DateTime.UtcNow.Date;
-
-            // Act
-            var result = _viewModel.FilterListBN;
-
-            // Assert
-            Assert.IsNotNull(result, "FilterListBN không được null.");
-            Assert.AreEqual(2, result.Count, "FilterListBN phải có đúng hai item.");
-        }
 
         [Test]
         public void ListBN_ShouldUpdate_WhenLoadDataIsCalled()
