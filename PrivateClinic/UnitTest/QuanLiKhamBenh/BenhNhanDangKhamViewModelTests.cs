@@ -69,20 +69,20 @@ namespace PrivateClinic.UnitTest.QuanLiTiepDon
 
 
         //Kiểm tra thêm thuốc thành công
-        [Test]
-        public void CheckAddMedicine_ValidData_AddsMedicineToList()
+        [TestCase(1, 1, "5", 1, 5)] // Trường hợp dữ liệu hợp lệ
+        public void CheckAddMedicine_ValidData_AddsMedicineToList(int maThuoc, int maCachDung, string soLuong, int expectedCount, int expectedRemainingQuantity)
         {
             // Arrange
-            _viewModel.SelectedThuoc = _viewModel.ListThuoc.First(t => t.MaThuoc == 1);
-            _viewModel.SelectedCachDung = _viewModel.ListCachDung.First(c => c.MaCachDung == 1);
-            _viewModel.SoLuong = "5";
+            _viewModel.SelectedThuoc = _viewModel.ListThuoc.First(t => t.MaThuoc == maThuoc);
+            _viewModel.SelectedCachDung = _viewModel.ListCachDung.First(c => c.MaCachDung == maCachDung);
+            _viewModel.SoLuong = soLuong;
 
             // Act
             _viewModel.AcceptAdd(null);
 
             // Assert
-            Assert.AreEqual(1, _viewModel.ListThuocDTO.Count, "Danh sách thuốc phải có 1 thuốc.");
-            Assert.AreEqual(5, _viewModel.ListThuoc[0].SoLuong, "Số lượng thuốc trong kho phải giảm.");
+            Assert.AreEqual(expectedCount, _viewModel.ListThuocDTO.Count, "Danh sách thuốc phải có số lượng thuốc đúng.");
+            Assert.AreEqual(expectedRemainingQuantity, _viewModel.ListThuoc.First(t => t.MaThuoc == maThuoc).SoLuong, "Số lượng thuốc trong kho không chính xác.");
         }
     }
 }
