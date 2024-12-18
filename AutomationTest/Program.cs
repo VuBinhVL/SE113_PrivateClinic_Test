@@ -1,5 +1,6 @@
 ﻿using AutomationTest.Helpers;
 using AutomationTest.Test;
+using FlaUI.Core;
 using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Definitions;
 using FlaUI.UIA3;
@@ -25,6 +26,8 @@ namespace AutomationTest
             {
                 using (var automation = new UIA3Automation())
                 {
+                    _app = app;
+                    _automation = automation;
 
                     //phần login này mn cứ giữ nguyên mặc định dị
                     #region login
@@ -84,9 +87,13 @@ namespace AutomationTest
                     //vào trang quản lý kho thuốc
                     MouseHelper.MoveAndLeftClick(502, 645);
                     Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    //tìm kiếm thuốc
                     mainWindow = app.GetMainWindow(automation);
-                    QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
+
+                    //tìm kiếm thuốc
+                    //   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
+
+                    //thêm thuốc
+                    QuanLyKhoThuoc.ThemSoLuongChoThuocCu(app, automation, mainWindow);
                     #endregion
 
                 }
@@ -94,5 +101,19 @@ namespace AutomationTest
 
 
         }
+
+
+
+        private static Application _app;
+        private static UIA3Automation _automation;
+        public static Window RefreshWindow()
+        {
+            return _app.GetMainWindow(_automation);
+        }
+
+        public static Window[] GetWindowsCur()
+        {
+            return _app.GetAllTopLevelWindows(_automation);
+        } 
     }
 }

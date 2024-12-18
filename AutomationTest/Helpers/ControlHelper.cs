@@ -10,8 +10,9 @@ namespace AutomationTest.Helpers
 {
     public static class ControlHelper
     {
-        public static AutomationElement FindMessageBoxByContent(Window[] windows, string content)
+        public static AutomationElement FindMessageBoxByContent( string content)
         {
+            Window[] windows = Program.GetWindowsCur();
             Window window = WindowHelper.SearchWindowByTitle(windows, "YesNoMessageBox");
             if (window == null)
             {
