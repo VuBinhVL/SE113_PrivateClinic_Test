@@ -106,7 +106,7 @@ namespace AutomationTest.Test
 
 
         #region Thêm số lượng cho thuốc cũ
-        public static void ThemSoLuongChoThuocCu(Application app, UIA3Automation automation, Window mainWindow)
+        public static void ThemSoLuongChoThuocCu(Window mainWindow)
         {
             // Thiết lập LicenseContext
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

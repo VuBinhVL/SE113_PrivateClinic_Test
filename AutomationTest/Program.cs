@@ -59,17 +59,17 @@ namespace AutomationTest
 
                     // Kiểm tra kết quả sau khi đăng nhập
                     //   Console.ReadLine();
-                    Thread.Sleep(3000);//chỗ này dừng luồng hiện tại 3s là vì khi nhấn nút đăng nhập hệ thống đợi load nữa
+                    Utils.Sleep(3000);//chỗ này dừng luồng hiện tại 3s là vì khi nhấn nút đăng nhập hệ thống đợi load nữa
 
 
 
 
 
 
-                    //mình phải check xem login có thành công k đã, thì để ý rằng khi login thành công nó sẽ có thanh navigation như vậy
-                    //thì mẹo check là mình sẽ check nếu màn hình xuất hiện nút đăng xuất là đã đăng nhập thành công
-                    //nút đăng xuất có id là 6
-                    mainWindow = app.GetMainWindow(automation);//refresh lại window hiện tại của app
+                //    //mình phải check xem login có thành công k đã, thì để ý rằng khi login thành công nó sẽ có thanh navigation như vậy
+                //    //thì mẹo check là mình sẽ check nếu màn hình xuất hiện nút đăng xuất là đã đăng nhập thành công
+                //    //nút đăng xuất có id là 6
+                    mainWindow = RefreshWindow();//refresh lại window hiện tại của app
                     var btnDangXuat = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("6"))?.AsButton();
                     if (btnDangXuat == null)
                     {
@@ -77,24 +77,27 @@ namespace AutomationTest
                         Console.WriteLine("Login thất bại");
                         return;
                     }
-                    //vào trang chủ của app
-                    #endregion
+                    //    //vào trang chủ của app
+                        #endregion
 
-                    Console.WriteLine("Đang ở trang chủ");
-                //    Console.WriteLine("Nhấn phím bất kì để start");
-                //    Console.ReadKey();//nhấn phím bất kì để start
+                        Console.WriteLine("Đang ở trang chủ");
+                    ////    Console.WriteLine("Nhấn phím bất kì để start");
+                    ////    Console.ReadKey();//nhấn phím bất kì để start
                     #region quản lý kho thuốc
                     //vào trang quản lý kho thuốc
                     MouseHelper.MoveAndLeftClick(502, 645);
                     Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    mainWindow = app.GetMainWindow(automation);
+                    mainWindow = RefreshWindow();
 
                     //tìm kiếm thuốc
                     //   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
 
                     //thêm thuốc
-                    QuanLyKhoThuoc.ThemSoLuongChoThuocCu(app, automation, mainWindow);
+                    QuanLyKhoThuoc.ThemSoLuongChoThuocCu( mainWindow);
                     #endregion
+
+
+                    //
 
                 }
             }
