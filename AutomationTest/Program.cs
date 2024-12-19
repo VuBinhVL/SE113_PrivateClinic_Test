@@ -101,18 +101,19 @@ namespace AutomationTest
 
 
                     #region quản lý bệnh nhân
-                    //vào chỗ thêm thuốc cho bệnh nhân
-                    MouseHelper.MoveAndLeftClick(1174, 538);
-                    Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    MouseHelper.MoveAndLeftClick(1266, 498);
-                    Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    mainWindow = RefreshWindow();
+                    ////vào chỗ thêm thuốc cho bệnh nhân
+                    //MouseHelper.MoveAndLeftClick(1174, 538);
+                    //Thread.Sleep(1000);//ngủ 1s cho nó load csdl
+                    //MouseHelper.MoveAndLeftClick(1266, 498);
+                    //Thread.Sleep(1000);//ngủ 1s cho nó load csdl
+                    //mainWindow = RefreshWindow();
+                    ////thêm thuốc cho bệnh nhân
+                    //QuanLiBenhNhan.ThemThuocChoBenhNhan(mainWindow);
 
                     //tìm kiếm thuốc
-                    //   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
+                       QuanLiBenhNhan.TimKiemBenhNhan(mainWindow);
 
-                    //thêm thuốc cho bệnh nhân
-                    QuanLiBenhNhan.ThemThuocChoBenhNhan(mainWindow);
+
                     #endregion
                 }
             }
