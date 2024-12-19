@@ -188,17 +188,18 @@ namespace PrivateClinic.ViewModel.QuanLiKhamBenhVM
             // Lọc theo ngày nếu có giá trị
             if (filterDate.HasValue)
             {
-                filteredList = filteredList.Where(bn => bn.NgayKham == filterDate.Value.Date);
+                filteredList = filteredList.Where(bn => bn.NgayKham.HasValue && bn.NgayKham.Value.Date == filterDate.Value.Date);
             }
 
             // Lọc theo tìm kiếm tên nếu có giá trị
             if (!string.IsNullOrWhiteSpace(SearchText))
             {
-                filteredList = filteredList.Where(bn => bn.HoTen.ToLower().Contains(SearchText.ToLower()));
+                filteredList = filteredList.Where(bn => bn.HoTen != null && bn.HoTen.ToLower().Contains(SearchText.ToLower()));
             }
 
             FilterListBN = new ObservableCollection<BenhNhanDTO>(filteredList);
         }
+
 
         //Hàm đếm số lượng bệnh nhân đã khám trong ngày
         private void SoLuongBNDaKhamHomNay()

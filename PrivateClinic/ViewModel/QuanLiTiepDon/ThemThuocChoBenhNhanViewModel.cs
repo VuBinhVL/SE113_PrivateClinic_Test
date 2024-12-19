@@ -132,6 +132,21 @@ namespace PrivateClinic.ViewModel.QuanLiTiepDon
                 }
             }
         }
+        private string _errorMessage; // Private field để lưu thông báo lỗi
+
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                if (_errorMessage != value) // Kiểm tra nếu giá trị thay đổi
+                {
+                    _errorMessage = value;
+                    OnPropertyChanged(nameof(ErrorMessage)); // Gọi PropertyChanged để thông báo UI cập nhật
+                }
+            }
+        }
+
         public ICommand AddCommand { get; set; }
         public ICommand SaveCommand { get; set; }
         public ICommand CancelCommand { get; set; }
@@ -183,46 +198,59 @@ namespace PrivateClinic.ViewModel.QuanLiTiepDon
         }
         int stt = 0;
 
-        //Chức năng thêm
-        private void AcceptAdd(object obj)
+        public void AcceptAdd(object obj)
         {
             ObservableCollection<THUOC> list = new ObservableCollection<THUOC>(DataProvider.Ins.DB.THUOCs);
+            
+
+            // Kiểm tra nếu thông tin không hợp lệ
+            if (SelectedThuoc == null || SelectedCachDung == null || string.IsNullOrEmpty(SoLuong))
+            {
+                ErrorMessage = "Chưa nhập đủ thông tin";
+                return;
+            }
+
+            // Kiểm tra Số lượng hợp lệ
+            if (!SoLuong.All(char.IsDigit) || int.Parse(SoLuong) <= 0)
+            {
+                ErrorMessage = "Số lượng không hợp lệ";
+                return;
+            }
+
+            // Kiểm tra số lượng thuốc có đủ hay không
+            if (SelectedThuoc != null && int.Parse(SoLuong) > SelectedThuoc.SoLuong)
+            {
+                ErrorMessage = "Số lượng thuốc không đủ";
+                return;
+            }
+
+            // Reset thông báo lỗi nếu tất cả thông tin hợp lệ
+            ErrorMessage = "Thành công";
+
             var thuoc = list.FirstOrDefault(x => x.MaThuoc == SelectedThuoc.MaThuoc);
-            if (SelectedThuoc == null || SelectedCachDung == null || string.IsNullOrEmpty(SoLuong)) 
-            {
-                OkMessageBox mb = new OkMessageBox("Thông báo", "Chưa nhập đủ thông tin");
-                mb.ShowDialog();
-            }
-            else if (!SoLuong.All(char.IsDigit) || int.Parse(SoLuong) <= 0)
-            {
-                OkMessageBox mb = new OkMessageBox("Thông báo", "Số lượng không hợp lệ");
-                mb.ShowDialog();
-            }
-            else if (int.Parse(SoLuong) > SelectedThuoc.SoLuong)
-            {
-                OkMessageBox mb = new OkMessageBox("Thông báo", "Số lượng thuốc không đủ");
-                mb.ShowDialog();
-            }
-            else
-            {
-                ThuocDTO thuocDTO = new ThuocDTO();
-                stt++;
-                thuocDTO.STT = stt;
-                thuocDTO.MaThuoc = MaThuoc;
-                thuocDTO.TenThuoc = selectedThuoc.TenThuoc;
-                thuocDTO.SL = int.Parse(SoLuong);
-                SelectedThuoc.SoLuong = SelectedThuoc.SoLuong - int.Parse(SoLuong);
-                thuocDTO.CachDung = SelectedCachDung.TenCachDung;
-                thuocDTO.DVT = DonVi;
-                ListThuocDTO.Add(thuocDTO);
-                SoLuongThuocDaChon = ListThuocDTO.Count();
-                SelectedThuoc = null;
-                SoLuong = "";
-                SelectedCachDung = null;
-                DonVi = "";
-                MaThuoc = "";
-            }
+            // Thực hiện thêm thuốc
+            ThuocDTO thuocDTO = new ThuocDTO();
+            stt++;
+            thuocDTO.STT = stt;
+            thuocDTO.MaThuoc = MaThuoc;
+            thuocDTO.TenThuoc = SelectedThuoc.TenThuoc;
+            thuocDTO.SL = int.Parse(SoLuong);
+
+            SelectedThuoc.SoLuong -= int.Parse(SoLuong);
+            thuocDTO.CachDung = SelectedCachDung.TenCachDung;
+            thuocDTO.DVT = DonVi;
+
+            ListThuocDTO.Add(thuocDTO);
+
+            // Cập nhật lại các thuộc tính sau khi thêm thuốc
+            SoLuongThuocDaChon = ListThuocDTO.Count();
+            SelectedThuoc = null;
+            SoLuong = "";  // Reset SoLuong khi thêm thuốc thành công
+            SelectedCachDung = null;
+            DonVi = "";
+            MaThuoc = "";
         }
+
         //Chức năng xóa
         private void DeleteAccept (ThuocDTO selecteditem)
         {
