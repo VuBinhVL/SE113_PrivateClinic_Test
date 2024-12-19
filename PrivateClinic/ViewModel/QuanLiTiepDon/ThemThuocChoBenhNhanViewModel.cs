@@ -201,32 +201,33 @@ namespace PrivateClinic.ViewModel.QuanLiTiepDon
         public void AcceptAdd(object obj)
         {
             ObservableCollection<THUOC> list = new ObservableCollection<THUOC>(DataProvider.Ins.DB.THUOCs);
-            var thuoc = list.FirstOrDefault(x => x.MaThuoc == SelectedThuoc.MaThuoc);
+            
 
             // Kiểm tra nếu thông tin không hợp lệ
             if (SelectedThuoc == null || SelectedCachDung == null || string.IsNullOrEmpty(SoLuong))
             {
-                ErrorMessage = "Chưa nhập đủ thông tin.";
+                ErrorMessage = "Chưa nhập đủ thông tin";
                 return;
             }
 
             // Kiểm tra Số lượng hợp lệ
             if (!SoLuong.All(char.IsDigit) || int.Parse(SoLuong) <= 0)
             {
-                ErrorMessage = "Số lượng không hợp lệ.";
+                ErrorMessage = "Số lượng không hợp lệ";
                 return;
             }
 
             // Kiểm tra số lượng thuốc có đủ hay không
             if (SelectedThuoc != null && int.Parse(SoLuong) > SelectedThuoc.SoLuong)
             {
-                ErrorMessage = "Số lượng thuốc không đủ.";
+                ErrorMessage = "Số lượng thuốc không đủ";
                 return;
             }
 
             // Reset thông báo lỗi nếu tất cả thông tin hợp lệ
-            ErrorMessage = "";
+            ErrorMessage = "Thành công";
 
+            var thuoc = list.FirstOrDefault(x => x.MaThuoc == SelectedThuoc.MaThuoc);
             // Thực hiện thêm thuốc
             ThuocDTO thuocDTO = new ThuocDTO();
             stt++;

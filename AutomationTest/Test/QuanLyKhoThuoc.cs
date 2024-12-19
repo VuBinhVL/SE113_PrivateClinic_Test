@@ -133,7 +133,7 @@ namespace AutomationTest.Test
                     string expectedResult = worksheet.Cells[row, 3]?.Text;
                     //Console.WriteLine(medication+"-"+quantity);
                     //nhấn vào nút thêm
-                    MouseHelper.MoveAndLeftClick(1440, 386);
+                    MouseHelper.MoveAndLeftClick(1289, 290);
                     Utils.Sleep(1000);
                     mainWindow = Program.RefreshWindow();
 
@@ -167,17 +167,18 @@ namespace AutomationTest.Test
                             Console.WriteLine($"Không tìm thấy giá trị: {valueToSelect}");
                             return;
                         }
-                        MouseHelper.MoveAndLeftClick(580, 729);//thoát combobox
+                        //MouseHelper.MoveAndLeftClick(580, 729);//thoát combobox
+                        MouseHelper.MoveAndLeftClick(1124, 346);//thoát combobox
                         Utils.Sleep(1000);
                     }
 
-                    MouseHelper.MoveAndLeftClick(797, 603);//nhấn vào ô nhập số lượng
+                    MouseHelper.MoveAndLeftClick(634, 498);//nhấn vào ô nhập số lượng
                     Utils.Sleep(1000);
                     Keyboard.Type(quantity);
                     Utils.Sleep(1000);
 
                     //nhấn nút lưu
-                    MouseHelper.MoveAndLeftClick(1259, 747);
+                    MouseHelper.MoveAndLeftClick(1074, 642);
                     Utils.Sleep(2000);
 
                     bool flag = false;
@@ -190,7 +191,7 @@ namespace AutomationTest.Test
                     if(flag)
                     {
                         //nhấn vào nút yes
-                        MouseHelper.MoveAndLeftClick(900, 596);
+                        MouseHelper.MoveAndLeftClick(698, 484);
                         Utils.Sleep(1000);
                         
 
@@ -201,9 +202,9 @@ namespace AutomationTest.Test
                         result = "F";
                         countFalse++;
                     }
-                    MouseHelper.MoveAndLeftClick(961, 591);//nhấn nút ok
+                    MouseHelper.MoveAndLeftClick(753, 483);//nhấn nút ok
                     worksheet.Cells[row, 4].Value= result;
-                    MouseHelper.MoveAndLeftClick(1372, 230);
+                    MouseHelper.MoveAndLeftClick(1179, 118);
                     Utils.Sleep(2000);
                 }
 

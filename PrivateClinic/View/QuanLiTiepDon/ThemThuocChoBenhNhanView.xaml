@@ -65,18 +65,20 @@
                         CornerRadius="10"
                         BorderBrush="Black"
                         >
-                    <!--Tên thuốc-->
                     <ComboBox
-                        Width="226"
-                        Height="35"
-                        Padding="5,0,0,0"
-                        HorizontalAlignment="Left"
-                        BorderThickness="0"
-                        VerticalContentAlignment="Center"
-                        ItemsSource="{Binding ListThuoc}"
-                        SelectedItem="{Binding SelectedThuoc, Mode=TwoWay}"
-                        DisplayMemberPath="TenThuoc"
-                        />
+    x:Name="cbxTenThuoc"
+    Width="226"
+    Height="35"
+    Padding="5,0,0,0"
+    HorizontalAlignment="Left"
+    BorderThickness="0"
+    VerticalContentAlignment="Center"
+    ItemsSource="{Binding ListThuoc}"
+    AutomationProperties.Name="{Binding Path=TenThuoc}" 
+    SelectedItem="{Binding SelectedThuoc, Mode=TwoWay}"
+    DisplayMemberPath="TenThuoc"
+/>
+
 
                 </Border>
 
@@ -160,11 +162,13 @@
                  Height="40"
                  VerticalAlignment="Top"
                  HorizontalAlignment="Center"
+                                 x:Name="txtSoLuong"
                  Text="{Binding SoLuong, UpdateSourceTrigger=PropertyChanged}" Width="136"/>
                     </Border>
 
                     <!-- Thông báo lỗi Số lượng -->
                     <TextBlock Margin="10,5,0,0"
+                                x:Name="ErrorMessage"
                FontSize="12"
                Foreground="Red"
                Text="{Binding ErrorMessage}" />
@@ -198,6 +202,7 @@
                         >
                     <!--Cách dùng-->
                     <ComboBox
+                        x:Name="cbxCachDung"
                         Width="369"
                         Height="35"
                         Padding="5,0,0,0"

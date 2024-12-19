@@ -84,21 +84,36 @@ namespace AutomationTest
                     ////    Console.WriteLine("Nhấn phím bất kì để start");
                     ////    Console.ReadKey();//nhấn phím bất kì để start
                     #region quản lý kho thuốc
-                    //vào trang quản lý kho thuốc
-                    MouseHelper.MoveAndLeftClick(502, 645);
+                    ////vào trang quản lý kho thuốc
+                    //MouseHelper.MoveAndLeftClick(275, 535);
+                    //Thread.Sleep(1000);//ngủ 1s cho nó load csdl
+                    //mainWindow = RefreshWindow();
+
+                    ////tìm kiếm thuốc
+                    ////   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
+
+                    ////thêm thuốc
+                    //QuanLyKhoThuoc.ThemSoLuongChoThuocCu( mainWindow);
+                    #endregion
+
+
+                    //
+
+
+                    #region quản lý bệnh nhân
+                    //vào chỗ thêm thuốc cho bệnh nhân
+                    MouseHelper.MoveAndLeftClick(1174, 538);
+                    Thread.Sleep(1000);//ngủ 1s cho nó load csdl
+                    MouseHelper.MoveAndLeftClick(1266, 498);
                     Thread.Sleep(1000);//ngủ 1s cho nó load csdl
                     mainWindow = RefreshWindow();
 
                     //tìm kiếm thuốc
                     //   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
 
-                    //thêm thuốc
-                    QuanLyKhoThuoc.ThemSoLuongChoThuocCu( mainWindow);
+                    //thêm thuốc cho bệnh nhân
+                    QuanLiBenhNhan.ThemThuocChoBenhNhan(mainWindow);
                     #endregion
-
-
-                    //
-
                 }
             }
 
