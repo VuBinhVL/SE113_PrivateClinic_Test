@@ -149,9 +149,34 @@ namespace PrivateClinic.ViewModel.ThanhToan
             }
         }
 
-        void _DeleteCommand(HOADON selectedItem)
+        public void _DeleteCommand(HOADON selectedItem)
         {
-            YesNoMessageBox h = new YesNoMessageBox("THÔNG BÁO", "Bạn có muốn xóa hóa đơn này ?");
+            //unit test 
+            if (User == null)
+            {
+                if (selectedItem != null)
+                {
+                    var relatedCTBCDTs = DataProvider.Ins.DB.CT_BCDT.Where(ct => ct.SoHD == selectedItem.SoHD).ToList();
+                    DataProvider.Ins.DB.CT_BCDT.RemoveRange(relatedCTBCDTs);
+
+                    var relatedCT_PKBs = DataProvider.Ins.DB.CT_PKB.Where(ctpkb => ctpkb.MaPKB == selectedItem.MaPKB).ToList();
+                    DataProvider.Ins.DB.CT_PKB.RemoveRange(relatedCT_PKBs);
+
+                    var relatedPHIEUKBs = DataProvider.Ins.DB.PHIEUKHAMBENHs.Where(pkb => pkb.MaPKB == selectedItem.MaPKB).ToList();
+                    DataProvider.Ins.DB.PHIEUKHAMBENHs.RemoveRange(relatedPHIEUKBs);
+
+                    DataProvider.Ins.DB.HOADONs.Remove(selectedItem);
+
+                    DataProvider.Ins.DB.SaveChanges();
+
+                    listHD.Remove(selectedItem);
+                    UpdateUnpaidInvoiceCount();
+                    RefreshData();
+                }
+                return;
+            }
+            YesNoMessageBox h = null;
+            h = new YesNoMessageBox("THÔNG BÁO", "Bạn có muốn xóa hóa đơn này ?");
             h.ShowDialog();
             if (h.DialogResult == true)
             {
@@ -228,6 +253,11 @@ namespace PrivateClinic.ViewModel.ThanhToan
         private void ThongTinND()
         {
             string tendangnhap = Const.TenDangNhap;
+            if(string.IsNullOrEmpty(tendangnhap))
+            {
+                return;
+            }
+          
             User = DataProvider.Ins.DB.NGUOIDUNGs.Where(x => x.TenDangNhap == tendangnhap).FirstOrDefault();
             string MaBS = User.MaBS.ToString();
             ObservableCollection<BACSI> DSBS = new ObservableCollection<BACSI>(DataProvider.Ins.DB.BACSIs);
