@@ -13,12 +13,12 @@
              mc:Ignorable="d">
     <Grid Background="White">
         <!--  Đổi mật khẩu  -->
-        <Grid >
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="70" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -31,27 +31,26 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{StaticResource icLock1}"
                            Width="45"
-                           Height="45"/>
+                           Height="45" />
                     <TextBlock  Text="Đổi mật khẩu"
                                Margin="15,3,0,0"
                                FontSize="30"
                                VerticalAlignment="Center"
-                               Foreground="#FFFFFF"/>
+                               Foreground="#FFFFFF" />
                 </StackPanel>
             </Border>
 
             <!--Mật khẩu cũ-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Mật khẩu hiện tại:"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
-                           Margin="40,0,0,0"
-                           />
+                           Margin="40,0,0,0" />
                 <PasswordBox
                     x:Name="txtMKcu"
                     Grid.Column="1"
@@ -65,14 +64,14 @@
             <!--Mật khẩu mới-->
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Mật khẩu mới:"
                            VerticalAlignment="Center"
                            Margin="40,0,0,0"
-                           HorizontalAlignment="Left"/>
+                           HorizontalAlignment="Left" />
                 <PasswordBox
                     x:Name="txtMKmoi"
                     Grid.Column="1"
@@ -86,14 +85,14 @@
             <!--Nhập lại mật khẩu-->
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Nhập lại mật khẩu mới:"
                            VerticalAlignment="Center"
                            Margin="40,0,0,0"
-                           HorizontalAlignment="Left"/>
+                           HorizontalAlignment="Left" />
                 <PasswordBox
                     x:Name="txtNhapLai"
                     Grid.Column="1"
@@ -107,6 +106,7 @@
             <Grid Grid.Row="4">
                 <Button Width="360"
                         Height="50"
+                        x:Name="btnDMK"
                         materialDesign:ButtonAssist.CornerRadius="10"
                         Command="{Binding ChangePasswordCommand}"
                         FontSize="25">
@@ -120,11 +120,11 @@
                                         <DropShadowEffect ShadowDepth="5"
                                                           Color="Black"
                                                           Opacity="0.5"
-                                                          BlurRadius="5"/>
+                                                          BlurRadius="5" />
                                     </Border.Effect>
                                     <ContentPresenter HorizontalAlignment="Center"
                                                       VerticalAlignment="Center"
-                                                      Content="Đổi mật khẩu"/>
+                                                      Content="Đổi mật khẩu" />
                                 </Border>
                             </Grid>
                         </ControlTemplate>

@@ -118,6 +118,7 @@
     <Compile Include="Helpers\WindowHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\HoSoBacSi.cs" />
     <Compile Include="Test\QuanLiBenhNhan.cs" />
     <Compile Include="Test\QuanLyKhoThuoc.cs" />
   </ItemGroup>
