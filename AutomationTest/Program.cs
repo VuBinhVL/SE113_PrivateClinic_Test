@@ -75,46 +75,41 @@ namespace AutomationTest
 					}
 					//    //vào trang chủ của app
 
-                        Console.WriteLine("Đang ở trang chủ");
-                    ////    Console.WriteLine("Nhấn phím bất kì để start");
-                    ////    Console.ReadKey();//nhấn phím bất kì để start
-
-                    #region quản lý kho thuốc
-
-                    ////vào trang quản lý kho thuốc
-                    //MouseHelper.MoveAndLeftClick(275, 535);
-                    //Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    //mainWindow = RefreshWindow();
-
-                    ////tìm kiếm thuốc
-                    ////   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
-
-                    ////thêm thuốc
-                    //QuanLyKhoThuoc.ThemSoLuongChoThuocCu( mainWindow);
-
-                    #endregion quản lý kho thuốc
-
 					#endregion login
+
+					Console.WriteLine("Đang ở trang chủ");
+					////    Console.WriteLine("Nhấn phím bất kì để start");
+					////    Console.ReadKey();//nhấn phím bất kì để start
+
+					#region quản lý kho thuốc
+
+					//vào trang quản lý kho thuốc
+					//MouseHelper.MoveAndLeftClick(502, 645);
+					//Thread.Sleep(1000);//ngủ 1s cho nó load csdl
+					//mainWindow = RefreshWindow();
+
+					//tìm kiếm thuốc
+					//   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
+
+					//thêm thuốc
+					//QuanLyKhoThuoc.ThemSoLuongChoThuocCu( mainWindow);
+
+					#endregion quản lý kho thuốc
 
 					#region Hồ sơ bác sĩ
 
-                    #region quản lý bệnh nhân
+					var hoSoView = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("5"))?.AsButton();
+					// Click nút HoSoBacSi
+					if (hoSoView == null)
+					{
+						Console.WriteLine("Không tìm thấy nút hồ sơ bác sĩ");
+						return;
+					}
+					hoSoView.Click();
+					Console.WriteLine("Đã vào trang Hồ sơ bác sĩ.");
 
-                    ////vào chỗ thêm thuốc cho bệnh nhân
-                    //MouseHelper.MoveAndLeftClick(1174, 538);
-                    //Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    //MouseHelper.MoveAndLeftClick(1266, 498);
-                    //Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-                    //mainWindow = RefreshWindow();
-                    ////thêm thuốc cho bệnh nhân
-                    //QuanLiBenhNhan.ThemThuocChoBenhNhan(mainWindow);
-
-                    //tìm kiếm thuốc
-                       QuanLiBenhNhan.TimKiemBenhNhan(mainWindow);
-
-                    #endregion quản lý bệnh nhân
-                }
-            }
+					//Vào phần đổi mật khẩu
+					//HoSoBacSi.DoiMatKhau(mainWindow);
 
 					//Tìm kiếm bác sĩ
 					HoSoBacSi.TimKiem(mainWindow);
