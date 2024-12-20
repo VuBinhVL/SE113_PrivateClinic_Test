@@ -9,7 +9,6 @@ using FlaUI.Core.WindowsAPI;
 using FlaUI.UIA3;
 using FlaUI.UIA3.Patterns;
 using OfficeOpenXml;
-using PrivateClinic.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;

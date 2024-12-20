@@ -84,9 +84,9 @@ namespace AutomationTest
 					#region quản lý kho thuốc
 
 					//vào trang quản lý kho thuốc
-					//MouseHelper.MoveAndLeftClick(502, 645);
-					//Thread.Sleep(1000);//ngủ 1s cho nó load csdl
-					//mainWindow = RefreshWindow();
+					MouseHelper.MoveAndLeftClick(502, 645);
+					Thread.Sleep(1000);//ngủ 1s cho nó load csdl
+					mainWindow = RefreshWindow();
 
 					//tìm kiếm thuốc
 					//   QuanLyKhoThuoc.TimKiemThuoc(mainWindow);
@@ -94,25 +94,27 @@ namespace AutomationTest
 					//thêm thuốc
 					//QuanLyKhoThuoc.ThemSoLuongChoThuocCu( mainWindow);
 
-					#endregion quản lý kho thuốc
+					//sửa thuốc
+					QuanLyKhoThuoc.SuaThuoc(mainWindow);
+                    #endregion quản lý kho thuốc
 
-					#region Hồ sơ bác sĩ
+                    #region Hồ sơ bác sĩ
 
-					var hoSoView = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("5"))?.AsButton();
-					// Click nút HoSoBacSi
-					if (hoSoView == null)
-					{
-						Console.WriteLine("Không tìm thấy nút hồ sơ bác sĩ");
-						return;
-					}
-					hoSoView.Click();
-					Console.WriteLine("Đã vào trang Hồ sơ bác sĩ.");
+     //               var hoSoView = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("5"))?.AsButton();
+					//// Click nút HoSoBacSi
+					//if (hoSoView == null)
+					//{
+					//	Console.WriteLine("Không tìm thấy nút hồ sơ bác sĩ");
+					//	return;
+					//}
+					//hoSoView.Click();
+					//Console.WriteLine("Đã vào trang Hồ sơ bác sĩ.");
 
-					//Vào phần đổi mật khẩu
-					//HoSoBacSi.DoiMatKhau(mainWindow);
+					////Vào phần đổi mật khẩu
+					////HoSoBacSi.DoiMatKhau(mainWindow);
 
-					//Tìm kiếm bác sĩ
-					HoSoBacSi.TimKiem(mainWindow);
+					////Tìm kiếm bác sĩ
+					//HoSoBacSi.TimKiem(mainWindow);
 
 					#endregion Hồ sơ bác sĩ
 				}

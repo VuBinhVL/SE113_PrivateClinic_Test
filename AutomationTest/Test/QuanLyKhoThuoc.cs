@@ -4,6 +4,7 @@ using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Definitions;
 using FlaUI.Core.Input;
 using FlaUI.Core.Tools;
+using FlaUI.Core.WindowsAPI;
 using FlaUI.UIA3;
 using OfficeOpenXml;
 using System;
@@ -207,7 +208,136 @@ namespace AutomationTest.Test
 				package.Save();
 			}
 		}
+        #endregion 
 
-		#endregion Thêm số lượng cho thuốc cũ
-	}
+        #region sửa thuốc
+        public static void SuaThuoc(Window mainWindow)
+        {
+            // Thiết lập LicenseContext
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            // Đường dẫn file Excel
+            string filePathRoot = @"..\..\TestCase\SuaThuoc\TestCase.xlsx";
+            string filePathTemp = @"..\..\TestCase\SuaThuoc\TestCaseTemp.xlsx";
+            File.Copy(filePathRoot, filePathTemp, true);
+            // Đọc file Excel
+            using (var package = new ExcelPackage(new FileInfo(filePathTemp)))
+            {
+                // Lấy worksheet đầu tiên
+                var worksheet = package.Workbook.Worksheets[0];
+
+                // Đọc dữ liệu từ các ô
+
+                int rowStart = 2;
+                int rowEnd = 7;
+
+                int countFalse = 0;
+                for (int row = rowStart; row <= rowEnd; row++)
+                {
+                    string tenthuoc = worksheet.Cells[row, 1]?.Text;//tên thuốc
+                    string donvitinh = worksheet.Cells[row, 2]?.Text;
+                    string price = worksheet.Cells[row, 3]?.Text;
+                    string expectedResult = worksheet.Cells[row, 4]?.Text;
+                    //Console.WriteLine(medication+"-"+quantity);
+                    //nhấn vào nút sửa
+                    MouseHelper.MoveAndLeftClick(1509, 637);
+                    Utils.Sleep(1000);
+                    mainWindow = Program.RefreshWindow();
+
+                    var elementComboboxListDVT = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("TenDVTcbx"))?.AsComboBox();
+                    if (elementComboboxListDVT == null)
+                    {
+                        Console.WriteLine("ComboBox đơn vị tính không tìm thấy!");
+                        return;
+                    }
+
+                    MouseHelper.MoveAndLeftClick(752, 496);//nhấn vào ô tên thuốc
+                    Utils.Sleep(1000);
+                    // Gửi tổ hợp phím Ctrl + A để chọn toàn bộ nội dung
+                    Keyboard.Press(VirtualKeyShort.CONTROL);
+                    Keyboard.Type(VirtualKeyShort.KEY_A);
+                    Keyboard.Release(VirtualKeyShort.CONTROL);
+
+                    // Nhấn phím Delete để xóa
+                    Keyboard.Type(VirtualKeyShort.DELETE);
+                    Keyboard.Type(tenthuoc);
+                    Utils.Sleep(1000);
+
+
+                    if (!string.IsNullOrEmpty(donvitinh))
+                    {
+                        // Mở ComboBox để hiển thị các mục
+                        elementComboboxListDVT.Patterns.ExpandCollapse.Pattern.Expand();
+
+                        // Lấy danh sách các mục
+                        var items = elementComboboxListDVT.FindAllChildren(cf => cf.ByControlType(ControlType.ListItem));
+
+                        // Tìm mục có giá trị cần chọn
+                        string valueToSelect = donvitinh;
+                        var itemToSelect = items.FirstOrDefault(i => i.Name == valueToSelect);
+
+                        if (itemToSelect != null)
+                        {
+                            itemToSelect.Patterns.SelectionItem.Pattern.Select();
+                            Console.WriteLine($"Đã chọn giá trị: {valueToSelect}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Không tìm thấy giá trị: {valueToSelect}");
+                            return;
+                        }
+                        //MouseHelper.MoveAndLeftClick(580, 729);//thoát combobox
+                        MouseHelper.MoveAndLeftClick(651, 665);//thoát combobox
+                        Utils.Sleep(1000);
+                    }
+                    MouseHelper.MoveAndLeftClick(1180, 499);//nhấn vào ô giá nhập
+                    Utils.Sleep(1000);
+                    // Gửi tổ hợp phím Ctrl + A để chọn toàn bộ nội dung
+                    Keyboard.Press(VirtualKeyShort.CONTROL);
+                    Keyboard.Type(VirtualKeyShort.KEY_A);
+                    Keyboard.Release(VirtualKeyShort.CONTROL);
+
+                    // Nhấn phím Delete để xóa
+                    Keyboard.Type(VirtualKeyShort.DELETE);
+                    Keyboard.Type(price);
+                    Utils.Sleep(1000);
+
+                    //nhấn nút lưu
+                    MouseHelper.MoveAndLeftClick(1261, 724);
+                    Utils.Sleep(2000);
+
+                    bool flag = false;
+                    if (expectedResult == "Sửa thành công")
+                    {
+                        expectedResult = "Bạn muốn lưu thông tin thuốc?";
+                        flag = true;
+                    }
+                    var msg = ControlHelper.FindMessageBoxByContent(expectedResult);
+                    if (flag && msg !=null)
+                    {
+                        //nhấn vào nút yes
+                        MouseHelper.MoveAndLeftClick(698, 484);
+                        Utils.Sleep(1000);
+                    }
+                    string result = "T";
+                    if (msg == null)
+                    {
+                        result = "F";
+                        countFalse++;
+                    }
+                    else
+                    {
+                        MouseHelper.MoveAndLeftClick(950, 598);//nhấn nút ok
+                    }
+                    MouseHelper.MoveAndLeftClick(1061, 726);//nhấn nút hủy
+                    worksheet.Cells[row, 5].Value = result;
+                    Utils.Sleep(2000);
+                }
+
+                worksheet.Cells[11, 2].Value = countFalse.ToString();
+                worksheet.Cells[10, 2].Value = ((rowEnd - rowStart + 1) - countFalse).ToString();
+                package.Save();
+            }
+        }
+        #endregion
+    }
 }

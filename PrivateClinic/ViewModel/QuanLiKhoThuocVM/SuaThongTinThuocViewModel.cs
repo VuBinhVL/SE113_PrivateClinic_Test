@@ -174,7 +174,7 @@ namespace PrivateClinic.ViewModel.QuanLiKhoThuocVM
                         //var phieuNhap = DataProvider.Ins.DB.PHIEUNHAPTHUOCs.FirstOrDefault(pn => pn.NgayNhap == ngayNhap);
 
                         DataProvider.Ins.DB.SaveChanges();
-                        OkMessageBox ok = new OkMessageBox("Thông báo", "Cập nhật thông tin thuốc thành công!");
+                        OkMessageBox ok = new OkMessageBox("Thông báo", "Sửa thành công");
                         ok.ShowDialog();
 
                         KhoThuocView quanLiThuocView = new KhoThuocView();

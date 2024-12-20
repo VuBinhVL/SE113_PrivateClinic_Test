@@ -36,5 +36,32 @@ namespace AutomationTest.Helpers
             return null;
 
         }
+
+        public static AutomationElement FindOkMessageBoxByContent(string content)
+        {
+            Window[] windows = Program.GetWindowsCur();
+            Window window = WindowHelper.SearchWindowByTitle(windows, "OkMessageBox");
+            if (window == null)
+            {
+                return null;
+            }
+            var elementsInWindow = window.FindAllDescendants(cf => cf.ByControlType(ControlType.Text));
+
+            if (elementsInWindow == null)
+            {
+                return null;
+            }
+
+            foreach (var element in elementsInWindow)
+            {
+                if (element.Properties.Name.Value == content)
+                {
+                    return element;
+                }
+            }
+
+            return null;
+
+        }
     }
 }
