@@ -463,8 +463,11 @@
     <Compile Include="Model\THUOC.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="UnitTest\HoaDon\XoaHoaDonChuaThanhToanViewModelTest.cs" />
-    <Compile Include="UnitTest\HoSoBacSi\CheckAddDoctor.cs" />
+
+	  <Compile Include="UnitTest\HoSoBacSi\ChangePasswordUnitTest.cs" />
+	  <Compile Include="UnitTest\HoaDon\XoaHoaDonChuaThanhToanViewModelTest.cs" />
+
+	  <Compile Include="UnitTest\HoSoBacSi\CheckAddDoctor.cs" />
     <Compile Include="UnitTest\QuanLiBenhNhan\BenhNhanDaKhamViewModelTests.cs" />
     <Compile Include="UnitTest\QuanLiKhamBenh\BenhNhanDangKhamViewModelTests.cs" />
     <Compile Include="ViewModel\BangDieuKhien\BangDieuKhienViewModel.cs" />

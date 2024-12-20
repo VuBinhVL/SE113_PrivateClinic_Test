@@ -16,9 +16,9 @@
     </UserControl.InputBindings>
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition/>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="80" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
         <!--Tiêu đề-->
@@ -27,14 +27,14 @@
             Margin="32,0,0,0">
             <Image Source="{StaticResource icDoctor}"
                    Width="45"
-                   Height="45"/>
+                   Height="45" />
 
             <TextBlock  Text="Tổng số lượng bác sĩ:"
                        Margin="5,0,0,0"
                        VerticalAlignment="Center"
                        FontWeight="Bold"
                        FontSize="30"
-                       Foreground="#348F6C"/>
+                       Foreground="#348F6C" />
 
             <!--Tổng số lượng bác sĩ-->
             <TextBlock
@@ -43,7 +43,7 @@
                 FontSize="30"
                 VerticalAlignment="Center"
                 FontWeight="Bold"
-                Foreground="#348F6C"/>
+                Foreground="#348F6C" />
         </StackPanel>
 
         <!--Nút thêm + tìm kiếm bác sĩ-->
@@ -59,14 +59,14 @@
                 BorderBrush="Black"
                 HorizontalAlignment="Left"
                 Margin="23 13 0 0"
-                CornerRadius="10"
-                >
+                CornerRadius="10">
                 <!--Tìm kiếm thuốc-->
                 <StackPanel Orientation="Horizontal">
                     <TextBox
                         Margin="20 0 0 0"
                         Width="520"
                         Height="40"
+                        x:Name="txtTimKiem"
                         BorderThickness="0"
                         Padding="5,0,0,0"
                         FontSize="20"
@@ -75,14 +75,12 @@
                         VerticalAlignment="Center"
                         VerticalContentAlignment="Center"
                         materialDesign:HintAssist.Hint="Nhập tên bác sĩ cần tìm"
-                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                        />
+                        Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
                     <Image Source="{StaticResource icSearch}"
                            Width="40"
                            Height="40"
-                           Margin="0 0 5 0"/>
+                           Margin="0 0 5 0" />
                 </StackPanel>
-
             </Border>
             <!--Nút thêm mới bác sĩ-->
             <Button
@@ -103,18 +101,17 @@
                                     <DropShadowEffect ShadowDepth="5"
                                                       Color="Black"
                                                       Opacity="0.5"
-                                                      BlurRadius="5"/>
+                                                      BlurRadius="5" />
                                 </Border.Effect>
                                 <ContentPresenter HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center"/>
+                                                  VerticalAlignment="Center" />
                             </Border>
                             <Image
                                 HorizontalAlignment="Left"
-                                Source="{StaticResource icAdd}"/>
+                                Source="{StaticResource icAdd}" />
                         </Grid>
                     </ControlTemplate>
                 </Button.Template>
-
             </Button>
         </StackPanel>
 
@@ -127,8 +124,7 @@
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
                       d:ItemsSource="{d:SampleData ItemCount=5}"
-                      ItemsSource="{Binding FilterDSBS}"
-                      >
+                      ItemsSource="{Binding FilterDSBS}">
                 <!--  Event trigger phục vụ show StaffDetail  -->
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
@@ -154,8 +150,8 @@
                                 Margin="5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
                                 <!-- Cột hình ảnh -->
@@ -171,30 +167,27 @@
                                     </Border.Background>
                                 </Border>
 
-
                                 <!-- Cột nội dung -->
                                 <StackPanel Grid.Column="1"
                                             Orientation="Vertical"
                                             Margin="10">
                                     <TextBlock Margin="0 0 0 4" Text="{Binding HoTen}"
                                                FontWeight="Bold"
-                                               FontSize="16"/>
+                                               FontSize="16" />
                                     <TextBlock Margin="0 0 0 3" Text="{Binding formatMaBS}"
-                                               FontSize="14"/>
+                                               FontSize="14" />
                                     <TextBlock Margin="0 0 0 3" Text="{Binding GioiTinh}"
-                                               FontSize="14"/>
+                                               FontSize="14" />
                                     <TextBlock Margin="0 0 0 3" Text="{Binding SDT}"
-                                               FontSize="14"/>
+                                               FontSize="14" />
                                     <TextBlock Margin="0 0 0 3" Text="{Binding BangCap}"
-                                               FontSize="14"/>
+                                               FontSize="14" />
                                 </StackPanel>
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
-
         </Grid>
     </Grid>
 </UserControl>
