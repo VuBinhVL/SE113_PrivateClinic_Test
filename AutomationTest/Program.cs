@@ -109,26 +109,10 @@ namespace AutomationTest
 					Console.WriteLine("Đã vào trang Hồ sơ bác sĩ.");
 
 					//Vào phần đổi mật khẩu
-					Utils.Sleep(1000);
-					mainWindow = Program.RefreshWindow();
-					var doiMKview = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("btnDoiMK"))?.AsButton();
-					if (doiMKview == null)
-					{
-						Console.WriteLine("Không tìm thấy nút hồ sơ bác sĩ");
-						return;
-					}
-					doiMKview.Invoke();
-					Console.WriteLine("Đã vào trang Đổi mật khẩu.");
+					//HoSoBacSi.DoiMatKhau(mainWindow);
 
-					//Thực hiện đổi mật khẩu với các testcase
-					/*Utils.Sleep(1000);
-					mainWindow = Program.RefreshWindow();
-					var doiMatKhauButton = mainWindow.FindFirstDescendant(cf => cf.ByAutomationId("btnDMK"))?.AsButton();
-					doiMatKhauButton.Invoke();
-
-					MouseHelper.MoveAndLeftClick(761, 491);//nhấn nút ok
-					Console.WriteLine("Đã nhấn vào nút OK.");*/
-					HoSoBacSi.DoiMatKhau(mainWindow);
+					//Tìm kiếm bác sĩ
+					HoSoBacSi.TimKiem(mainWindow);
 
 					#endregion Hồ sơ bác sĩ
 				}
